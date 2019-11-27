@@ -9,10 +9,12 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 const swag        = require('swag');
+const passport = require("passport");
 
 const session    = require("express-session");
 const MongoStore = require('connect-mongo')(session);
 const flash      = require("connect-flash");
+
 
 mongoose
   .connect(`${process.env.DB}`, {useNewUrlParser: true})
@@ -64,7 +66,7 @@ swag.registerHelpers(hbs);
 
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'Stack n FLy';
 
 
 // Enable authentication using session + passport
@@ -76,6 +78,11 @@ app.use(session({
 }))
 app.use(flash());
 require('./passport')(app);
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 
 const stacks = require('./routes/stacks');

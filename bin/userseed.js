@@ -26,7 +26,7 @@ let users = [
   },
   {
     username: "fran",
-    password: "goiko",
+    password: bcrypt.hashSync("fran", bcrypt.genSaltSync(bcryptSalt)),
     email: "franelcanario@gmail.com",
     banned: false,
     stacksCreated: ["Architec mode"],
@@ -34,14 +34,14 @@ let users = [
   },
   {
     username: "dani",
-    password: "grill",
+    password: bcrypt.hashSync("dani", bcrypt.genSaltSync(bcryptSalt)),
     email: "danielgallego@gmail.com",
     banned: true,
     rol: "mod",
   },
   {
     username: "fake",
-    password: "fake",
+    password: bcrypt.hashSync("fake", bcrypt.genSaltSync(bcryptSalt)),
     email: "macfakerman@gmail.com",
     banned: true,
     rol: "user",
@@ -50,7 +50,7 @@ let users = [
   },
   {
     username: "doggie",
-    password: "bones",
+    password: bcrypt.hashSync("bones", bcrypt.genSaltSync(bcryptSalt)),
     email: "definetlly-not-a-dog@gmail.com",
     banned: false,
     rol: "mod",
@@ -58,7 +58,7 @@ let users = [
   },
   {
     username: "sito",
-    password: "sito",
+    password: bcrypt.hashSync("sito", bcrypt.genSaltSync(bcryptSalt)),
     email: "sito@citytonight.com",
     banned: false,
     rol: "user",

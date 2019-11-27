@@ -46,10 +46,11 @@ nav div {
   justify-content: space-around;
   align-items: center;
   background-color: red;
-  position: absolute;
+  position: fixed;
   width: 25rem;
   right: 1.7rem;
-  top: 5rem; }
+  top: 5rem;
+  z-index: 500; }
   .login-box .close-login {
     position: fixed;
     top: 5rem;

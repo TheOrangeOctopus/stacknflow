@@ -18,12 +18,19 @@
       <a href="/">Logo</a>
     </div>
     <div>
-      <a href="/stacks/adminpanel"> Admin Panel</a>
+      
+      {{#unless user}}
       <a href="/auth/login" id="login-button" class="login-button">Login </a>
-
-
-
       <a href="/auth/signup">Signup</a>
+      {{/unless}}
+      {{#if user}}
+      {{#is user.rol "admin"}}
+      <a href="/stacks/adminpanel"> Admin Panel</a>
+      {{/is}}
+      <a href="/collection">My collection</a>
+      <a href="/logout">Logout</a>
+        {{/if}}
+      
     </div>
   </nav>
 

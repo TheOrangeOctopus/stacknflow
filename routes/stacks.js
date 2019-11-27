@@ -5,17 +5,32 @@ const spotifyApi = require("../configs/spotifyApi");
 const uploadPictureCloud = require('../configs/cloudinaryImg');
 const uploadDocumentCloud = require('../configs/cloudinaryDoc');
 
-// router.get('/', (req, res, next) => {
-//   res.render('stacks/show');
-// });
+const LocalStrategy = require("passport-local").Strategy;
+const ensureLogin = require("connect-ensure-login");
+const passport = require('passport');
+const User = require("../models/User");
+const bcrypt = require("bcrypt");
 
-// router.get('/:id', (req, res, next) => {
-//   Stacks.find({ _id: req.params.id })
-//     .then((stackFound) => {
-//       res.render('stacks/show', stackFound);
-//     }).catch(next())
 
-// });
+
+
+
+router.get("/", (req, res, next) => {
+  console.log("Hola peter")
+  Stacks.find({})
+  .sort({"likesCounter": -1})
+    .lean()
+    .then(allStacks =>
+      res.render("stacks/show", {
+        stacks: allStacks,
+        user: req.user, 
+      })
+    )
+    .catch(function() {
+      res.redirect("/error")
+    });
+});
+
 
 //Valorar meter un project para quedarnos con lo que nos interesa del objeto
 //y ver si hay que popular.
@@ -28,7 +43,8 @@ router.post('/filtered', (req, res, next) => {
 
 
 router.get('/new', (req, res, next) => {
-  res.render('stacks/new')
+  res.render('stacks/new', { 
+    user: req.user })
 })
 
 //revisar si popular , la subida de imagenes y los steps que populen las sources
@@ -38,20 +54,13 @@ router.post('/new', (req, res, next) => {
   });
 })
 
-router.get("/", (req, res, next) => {
-  Stacks.find({})
-  .sort({"likesCounter": -1})
-    .lean()
-    .then(allStacks =>
-      res.render("stacks/show", { stacks: allStacks })
-    )
-    .catch(function() {
-      next();
-      throw new Error("There's an error.");
-    });
-});
 
-router.get("/adminpanel", (req, res, next) => {
+
+
+
+
+
+/* router.get("/adminpanel", (req, res, next) => {
   Stacks.find({})
   .sort({"created_at": 1})
     .lean()
@@ -62,7 +71,7 @@ router.get("/adminpanel", (req, res, next) => {
       next();
       throw new Error("There's an error.");
     });
-});
+}); */
 
 router.get("/:id/delete", (req, res, next) => {
   Stacks.findByIdAndDelete(req.params.id)
@@ -76,7 +85,8 @@ router.get("/:id/delete", (req, res, next) => {
 router.get("/:id/edit", (req, res, next) => {
   Stacks.findById(req.params.id)
     .then(stackDetail =>
-      res.render("stacks/edit", { stack: stackDetail })
+      res.render("stacks/edit", { stack: stackDetail,
+        user: req.user })
     )
     .catch(function() {
       next();
@@ -92,7 +102,8 @@ router.post("/:id/edit", (req, res) => {
       description: req.body.description,
       category: req.body.category,
       timeInHours: req.body.timeInHours,
-      status: req.body.status
+      status: req.body.status,
+      user: req.user,
     }
   )
       .then(updatedStack => {
@@ -100,17 +111,109 @@ router.post("/:id/edit", (req, res) => {
   })
 }); 
 
-router.get("/:id", (req, res, next) => {
+router.get("/:id",  (req, res, next) => {
   Stacks.findById(req.params.id)
     .then(stackDetail =>
-      res.render("stacks/detail", { stack: stackDetail })
+      res.render("stacks/detail", { 
+        stack: stackDetail,
+        user: req.user,  })
     )
     .catch(function() {
       next();
       throw new Error("Algo no ha ido bien, willy!");
     });
 });
+//////////////////////////////////////////////LOGIN///////////////////////////////////
+passport.use(
+  new LocalStrategy(
+    {
+      passReqToCallback: true
+    },
+    (req, username, password, next) => {
+      User.findOne(
+        {
+          username
+        },
+        (err, user) => {
+          if (err) {
+            return next(err);
+          }
+          if (!user) {
+            return next(null, false, {
+              message: "Incorrect username"
+            });
+          }
+          if (!bcrypt.compareSync(password, user.password)) {
+            return next(null, false, {
+              message: "Incorrect password"
+            });
+          }
 
+          return next(null, user);
+        }
+      );
+    }
+  )
+);
+
+passport.serializeUser((user, cb) => {
+  console.log("serialize");
+  console.log(`storing ${user._id} in the session`);
+   cb(null, {id: user._id, rol: user.rol});
+});
+
+passport.deserializeUser((id, cb) => {
+  console.log("deserialize");
+  console.log(`Attaching ${id} to req.user`);
+  User.findById(id, (err, user) => {
+    if (err) {
+      return cb(err);
+    }
+    cb(null, user);
+  });
+});
+
+function checkRoles(roles) {
+  return function(req, res, next) {
+    if (req.isAuthenticated() && roles.includes(req.user.rol)) {
+      return next();
+    } else {
+      if (req.isAuthenticated()) {
+        res.redirect("/stacks");
+      } else {
+        res.redirect("/error");
+      }
+    }
+  };
+}
+
+const checkAdminOrMod = checkRoles(["admin", "mod"]);
+const checkAdmin = checkRoles(["admin"]);
+
+
+router.get("/adminpanel", (req, res, next) => {
+  Stacks.find({})
+  .sort({"created_at": 1})
+    .lean()
+    .then(allStacks =>
+      res.render("adminpanel", { 
+        stacks: allStacks,
+        user: req.user,
+        })
+    )
+    .catch(function() {
+      next();
+      throw new Error("There's an error.");
+    });
+});
+
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/");
+});
+
+
+/////////////////////////////////////////////////APIS//////////////////////////////////
 
 router.get('/spotifyAPI/:query', (req, res, next) => {
   let items = [];
