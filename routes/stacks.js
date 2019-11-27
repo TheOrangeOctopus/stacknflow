@@ -17,7 +17,7 @@ const bcrypt = require("bcrypt");
 
 router.get("/", (req, res, next) => {
   console.log("Hola peter")
-  Stacks.find({})
+  Stacks.find({status: "active"})
   .sort({"likesCounter": -1})
     .lean()
     .then(allStacks =>
@@ -197,6 +197,22 @@ router.get("/adminpanel", (req, res, next) => {
     .lean()
     .then(allStacks =>
       res.render("adminpanel", { 
+        stacks: allStacks,
+        user: req.user,
+        })
+    )
+    .catch(function() {
+      next();
+      throw new Error("There's an error.");
+    });
+});
+
+router.get("/pendingpanel", (req, res, next) => {
+  Stacks.find({status: "pending"})
+  .sort({"created_at": 1})
+    .lean()
+    .then(allStacks =>
+      res.render("pendingpanel", { 
         stacks: allStacks,
         user: req.user,
         })
