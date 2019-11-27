@@ -15,6 +15,8 @@ const session    = require("express-session");
 const MongoStore = require('connect-mongo')(session);
 const flash      = require("connect-flash");
 
+const User = require("./models/User");
+
 
 mongoose
   .connect(`${process.env.DB}`, {useNewUrlParser: true})
@@ -92,6 +94,45 @@ const authRoutes = require('./routes/auth');
 app.use('/', index);
 app.use('/auth', authRoutes);
 app.use('/stacks', stacks);
+
+// Google Login
+
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: `${process.env.GOOGLE_ID_CLIENT}`,
+      clientSecret: `${process.env.GOOGLE_SECRET_ID}`,
+      callbackURL: "/auth/google/callback"
+    },
+    (accessToken, refreshToken, profile, done) => {
+      // to see the structure of the data in received response:
+      console.log("Google account details:", profile);
+
+      User.findOne({ googleID: profile.id })
+        .then(user => {
+          if (user) {
+            done(null, user);
+            return;
+          }
+
+          const newUser = {
+            googleID: profile.id,
+            email: profile.emails[0].value,
+            username: profile.displayName,
+          }
+
+          User.create(newUser)
+            .then(newUser => {
+              done(null, newUser);
+            })
+            .catch(err => done(err)); // closes User.create()
+        })
+        .catch(err => done(err)); // closes User.findOne()
+    }
+  )
+);
 
 //module.exports = spotifyApi;
 module.exports = app;

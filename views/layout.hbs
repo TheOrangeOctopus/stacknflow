@@ -16,7 +16,7 @@
 
   <nav>
     <div>
-      <a href="/"><i class="far fa-image"></i>
+      <a href="/stacks"><i class="far fa-image"></i>
 
 </a>
     </div>
@@ -29,6 +29,7 @@
     <div>
       
       {{#unless user}}
+      <a href="auth/google">Login With Google</a>
       <a href="/auth/login" id="login-button" class="login-button">Login </a>
       <a href="/auth/signup">Signup</a>
       {{/unless}}

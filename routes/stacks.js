@@ -207,7 +207,7 @@ router.get("/adminpanel", (req, res, next) => {
     });
 });
 
-router.get("/pendingpanel", (req, res, next) => {
+router.get("/adminpanel/pendingpanel", (req, res, next) => {
   Stacks.find({status: "pending"})
   .sort({"created_at": 1})
     .lean()
@@ -267,6 +267,8 @@ router.post('/uploadPicture', uploadPictureCloud.single("image"), (req, res, nex
 router.post('/uploadDocument', uploadDocumentCloud.single("document"), (req, res, next) => {
   res.json(req.file)  
 });
+
+// Login Google
 
 
 
