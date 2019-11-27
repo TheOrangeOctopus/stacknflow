@@ -17,7 +17,7 @@ const bcrypt = require("bcrypt");
 
 router.get("/", (req, res, next) => {
   console.log("Hola peter")
-  Stacks.find({})
+  Stacks.find({status: "active"})
   .sort({"likesCounter": -1})
     .lean()
     .then(allStacks =>

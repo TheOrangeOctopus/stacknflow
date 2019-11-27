@@ -3,6 +3,55 @@ html{
 }
 
 body {
-  font: 1.4rem "Lucida Grande", Helvetica, Arial, sans-serif;
-  font-family: 'IBM Plex Mono', monospace;
+  // font-family: 'IBM Plex Mono', monospace;
+  // font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  // font-family: 'IBM Plex Serif', serif;
 }
+
+h1{
+  font-size: 2rem;
+  font-weight: 200;
+}
+
+h2{
+  font-size:1.8rem;
+  background-color:$primarycolor;
+  color:$white;
+  padding:0 1rem;
+  font-weight: 200;
+  margin:0
+}
+
+h3{
+  font-size:1.8rem;
+  font-weight: 200;
+}
+
+
+h4{
+  font-size:1.4rem ;
+  font-weight: 200;
+}
+
+h5{
+  font-size:1.4rem ;
+  font-weight: 200;
+}
+
+p{
+  font-size:1.4rem ;
+  font-weight: 200;
+}
+
+a{
+  font-size:1.4rem;
+  font-weight: 200;
+}
+
+textarea{
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-size:1.4rem;
+
+}
+

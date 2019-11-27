@@ -1,6 +1,53 @@
 .hidden {
   display: none !important; }
 
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
 * {
   box-sizing: border-box; }
 
@@ -8,19 +55,60 @@ body {
   margin: 0;
   padding: 0; }
 
+textarea {
+  resize: none; }
+
 .main-wrapper {
-  display: flex;
   width: 100%;
   flex-direction: column;
   align-items: center;
-  margin-top: 10rem; }
+  margin-top: 8rem;
+  display: flex; }
+
+input {
+  border: none; }
 
 html {
   font-size: 10px; }
 
 body {
-  font: 1.4rem "Lucida Grande", Helvetica, Arial, sans-serif;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'IBM Plex Sans Condensed', sans-serif; }
+
+h1 {
+  font-size: 2rem;
+  font-weight: 200; }
+
+h2 {
+  font-size: 1.8rem;
+  background-color: #3b45ff;
+  color: #ffffff;
+  padding: 0 1rem;
+  font-weight: 200;
+  margin: 0; }
+
+h3 {
+  font-size: 1.8rem;
+  font-weight: 200; }
+
+h4 {
+  font-size: 1.4rem;
+  font-weight: 200; }
+
+h5 {
+  font-size: 1.4rem;
+  font-weight: 200; }
+
+p {
+  font-size: 1.4rem;
+  font-weight: 200; }
+
+a {
+  font-size: 1.4rem;
+  font-weight: 200; }
+
+textarea {
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-size: 1.4rem; }
 
 nav {
   height: 8rem;
@@ -82,24 +170,21 @@ nav div {
 .all-stacks {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  margin: 2rem 0;
+  width: 85%;
   max-width: 1200px; }
 
 .one-stack {
   /* height: 35rem; */
-  padding: 1rem;
+  padding: 1.5rem;
   width: 35rem;
   height: 40rem;
   border: 2px solid #3b45ff;
   box-shadow: 10px 10px 0px 2px rgba(0, 0, 0, 0.1);
-  margin: 2rem 0rem;
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative;
   transition: 0.3s; }
 
 .one-stack:hover {
@@ -130,8 +215,7 @@ nav div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  margin: 0 1rem; }
+  align-items: center; }
 
 .image-preview-display {
   height: 15rem;
@@ -151,7 +235,6 @@ nav div {
   justify-content: space-between;
   align-items: center;
   height: 3rem;
-  margin: 0 1rem;
   position: relative;
   bottom: 0rem; }
 
@@ -177,8 +260,7 @@ nav div {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center;
-  font-size: 1.7rem; }
+  align-items: center; }
 
 .control-panel {
   display: flex;
@@ -196,41 +278,71 @@ nav div {
   opacity: .1;
   background: #3d5863; }
 
-.main-wrapper {
+.new-stack-wrapper {
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
   display: flex; }
-  .main-wrapper input, .main-wrapper select, .main-wrapper button {
+  .new-stack-wrapper input, .new-stack-wrapper select, .new-stack-wrapper button {
     padding: 1rem;
-    margin: 1rem 0;
-    font-size: 2rem; }
-  .main-wrapper p {
-    margin: 1rem 0;
-    font-size: 2rem; }
+    margin: 1rem 0; }
+  .new-stack-wrapper p {
+    margin: 1rem 0; }
+  .new-stack-wrapper h2 {
+    font-size: 3rem;
+    color: #3b45ff;
+    padding: 0;
+    background: none; }
+  .new-stack-wrapper textarea {
+    width: 100%; }
 
 .creation {
-  width: 45%;
+  padding: 4rem;
+  width: 50%;
   display: flex;
   flex-direction: column;
-  align-items: left; }
+  align-items: flex-start;
+  background-color: #3b45ff;
+  min-height: 100vh; }
   .creation .stack-controllers {
-    background-color: rgba(61, 88, 99, 0.1); }
+    background-color: rgba(23, 126, 167, 0.815);
+    width: 100%; }
   .creation .stack-mainInfo {
-    background-color: rgba(61, 88, 99, 0.15); }
+    background-color: rgba(66, 199, 110, 0.15);
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap; }
   .creation .step-creation {
-    background-color: rgba(61, 88, 99, 0.3); }
+    background-color: rgba(193, 118, 223, 0.3);
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap; }
+
+.new-border {
+  border: 2px solid #3b45ff;
+  padding: 2rem; }
 
 .new-preview {
-  width: 45%;
+  padding: 4rem;
+  width: 50%;
   display: flex;
   flex-direction: column;
-  align-items: left; }
+  align-items: left;
+  background-color: #ffffff; }
   .new-preview .new-stack-step {
     padding: 1rem;
     margin: 1rem 0;
     background-color: rgba(61, 88, 99, 0.1); }
   .new-preview .new-stack-step:hover {
     cursor: all-scroll; }
+  .new-preview .new-img-stack {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: saturate(0.3); }
+
+.spotify-result img {
+  width: 100%;
+  object-fit: contain; }
 
 .spotify-results-list {
   list-style-type: none;
@@ -272,12 +384,29 @@ nav div {
   display: flex;
   justify-content: space-between;
   width: 100%; }
-  .spotify-result p {
-    font-size: 1.4rem; }
   .spotify-result div:first-of-type {
     width: 20%; }
   .spotify-result div:last-of-type {
     width: 75%; }
+
+#new-stack-image {
+  margin-bottom: 2rem; }
+
+.new-step {
+  padding: 1rem 1rem;
+  border-top: 2px solid #3b45ff;
+  transition: all 0.3s; }
+
+.new-step:hover {
+  background-color: rgba(59, 69, 255, 0.05);
+  transition: all 0.3s; }
+
+.new-step:last-of-type {
+  padding: 1rem 1rem;
+  border-top: 2px solid #3b45ff;
+  border-bottom: 2px solid #3b45ff;
+  transition: all 0.3s;
+  margin-bottom: 2px; }
 
 .html-detail {
   margin-top: -1rem;

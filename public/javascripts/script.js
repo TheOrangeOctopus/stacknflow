@@ -162,7 +162,7 @@ function loadStepFromEditor() {
   
   let stepsContainerDomEl = document.querySelector(".new-stack-steps")
   let newStepDomEl = document.createElement("div")
-  let newStepTitleDomEl = document.createElement("h2")
+  let newStepTitleDomEl = document.createElement("h3")
   let newStepInstDomEl = document.createElement("p")
   let title = document.querySelector("#step-title").value
   let instructions = document.querySelector("#step-instructions").value

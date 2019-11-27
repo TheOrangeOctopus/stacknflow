@@ -1,6 +1,7 @@
-<h1>NEW STACK</h1>
-<div class="main-wrapper">
+
+<div class="new-stack-wrapper">
   <div class="creation">
+    <h1>NEW STACK</h1>
     <div class="stack-controllers">
       {{!-- <button class="btn-addStep" value="New Step"> Edit Stack Info </button>
       <button class="btn-addStep" value="New Step"> New Step</button> --}}
@@ -36,8 +37,8 @@
     </div>
     <div class="hidden step-creation">
       <p>Title:</p> <input type="text" name="title" id="step-title" value="" placeholder="Name your brand new Stack :)">
-      <p>Instructions:</p> <input type="text" name="instructions" id="step-instructions" value=""
-        placeholder="Short description of the stack">
+      <p>Instructions:</p> <textarea name="instructions" id="step-instructions" value=""
+        placeholder="Short description of the stack"></textarea>
       <p>Add Resource:</p> <select name="source-type" class="source-type">
         <option value="text" selected="selected">None</option>
         <option value="spotify">Spotify</option>
@@ -91,21 +92,22 @@
   </div>
 
   <div class="new-preview">
+    <div class="new-border">
     <div id="new-stack-header">
-      <h1 id="new-stack-title">Title</h1>
+      <h2 id="new-stack-title">Title</h2>
       <p id="new-stack-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae, numquam aperiam!
         Reiciendis voluptatibus quibusdam consequuntur, repellat a cum quos illo quas deserunt omnis accusamus excepturi
         doloremque aliquid ipsam quae dicta?</p>
     </div>
     <div id="new-stack-image">
-      <img class="new-img-stack" src="/images/dummy.jpeg" alt="stack image">
+      <img class="new-img-stack" src="/images/dummy.jpg" alt="stack image">
     </div>
     <div class="new-stack-steps" id="stepsContainer">
       
     </div>
     <button class="save-stack">SAVE STACK</button>
 
-  </div>
+  
   <form id="stack-data" class="hidden stack-data" action="/stacks/new" method="POST">
     <input type="hidden" name="title" id="title" value="">
     <input type="hidden" name="description" id="description" value="">
@@ -123,4 +125,7 @@
     </fieldset>
 
   </form>
+
+  </div>
+  </div>
 </div>

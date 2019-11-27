@@ -4,46 +4,77 @@
 }
 
 
-.main-wrapper{
+.new-stack-wrapper{
   width:100%;
-  justify-content: space-around;
+  justify-content: space-between;
   display:flex;
   input, select,button{
     padding:1rem;
     margin:1rem 0;
-    font-size:2rem;
+    // font-size:2rem;
   }
   p{
     margin:1rem 0;
-    font-size:2rem;
+    // font-size:2rem;
+  }
+
+  h2{
+    font-size:3rem;
+    color:$primarycolor;
+    padding:0;
+    background:none;
+  }
+
+  textarea{
+    width:100%;
   }
 }
 
 .creation{
-  width:45%;
+  padding:4rem;
+  width:50%;
   display:flex;
   flex-direction: column;
-  align-items: left;
+  align-items: flex-start;
+  background-color: $primarycolor;
+  min-height:100vh;
 
 .stack-controllers{
-  background-color:rgba(61, 88, 99,0.1)
+  background-color:rgba(23, 126, 167, 0.815);
+  width:100%;
 }
 
 .stack-mainInfo{
-  background-color:rgba(61, 88, 99,0.15)
+  background-color:rgba(66, 199, 110, 0.15);
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
 }
 
 .step-creation{
-  background-color:rgba(61, 88, 99,0.3)
+  background-color:rgba(193, 118, 223, 0.3);
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
+
 }
 
 
 }
+
+.new-border{
+  border: 2px solid $primarycolor;
+  padding:2rem;
+}
+
 .new-preview{
-  width:45%;
+  padding:4rem;
+  width:50%;
   display:flex;
   flex-direction: column;
   align-items: left;
+  background-color:$white;
+ 
 
   .new-stack-step{
     padding:1rem;
@@ -55,6 +86,18 @@
   .new-stack-step:hover{
     cursor:  all-scroll;
   }
+
+  .new-img-stack{
+    width:100%;
+    height:100%;
+    object-fit: contain;
+    filter: saturate(0.3);
+  }
+}
+
+.spotify-result img{
+  width:100%;
+  object-fit: contain;
 }
 
 
@@ -117,10 +160,6 @@
   justify-content: space-between;
   width:100%;
   
-  p{
-    font-size:1.4rem;
-  }
-
   
   div:first-of-type{
     width:20%;
@@ -130,4 +169,28 @@
     width:75%;
 
   }
+}
+
+#new-stack-image{
+  margin-bottom:2rem;
+}
+
+.new-step{
+  padding:1rem 1rem;
+  border-top: 2px solid $primarycolor;
+  transition:all 0.3s;
+}
+
+.new-step:hover{
+  background-color: $primarycolorSoft;
+  transition:all 0.3s;
+}
+
+
+.new-step:last-of-type{
+  padding:1rem 1rem;
+  border-top: 2px solid $primarycolor;
+  border-bottom: 2px solid $primarycolor;
+  transition:all 0.3s;
+  margin-bottom:2px;
 }
