@@ -1,0 +1,129 @@
+
+.html-detail{
+  margin-top: -1rem;
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0rem;
+}
+
+.header-detail{
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items:flex-start;
+  margin: 0px;
+  padding: 0px;
+  width: 99vw;
+  max-width: 1366px;
+  height: 40vh;
+  color: white;
+  position:relative;
+  .image-detail{
+    object-fit: cover;
+   width: inherit;
+   height: inherit;
+   max-width: inherit;
+   position:absolute;
+   background-repeat: no-repeat;
+   z-index:-2
+   
+  }
+  .info-detail{
+   position: absolute;
+   bottom: 0rem;
+   left: 1rem;
+    h1{
+      font-size: 5rem;
+      padding-bottom: 1rem;
+    }
+  
+  }
+  .shadow{
+    width: inherit;
+    height: inherit;
+    max-width: inherit;
+    background: linear-gradient(to bottom, rgba(255,0,0,0), rgba(0,0,0,0.90)); /* Standard syntax (must be last) */
+}
+
+}
+.body-detail{
+  display:flex;
+  flex-direction: column;
+ justify-content: center;
+  align-items: center;
+  color: black;
+  width: 100%;
+  max-width: 1366px;
+}
+.steps-detail{
+  padding: 2rem 0;
+  width: 80%;
+  position:relative;
+  display:flex;
+  flex-direction: column;
+  max-width: inherit;
+ 
+
+}
+.one-step{
+  border-left: 0.3rem solid #222;
+  position:relative;
+  padding: 2rem;
+  max-width: inherit;
+}
+
+.one-step:last-child{
+  border-left: 0.3rem solid #222;
+  border-image-source: linear-gradient( #222, white);
+  border-image-slice: 8 2;
+  max-width: inherit;
+  .bar-detail{
+    background-color: rgba(0,0,0,0.10);
+    width: 2rem;
+    height: 0.3rem;
+    position: relative;
+    left: -3.2rem;
+    bottom: -0.9rem;
+  }
+}
+.step-number-detail{
+  background-color: #222;
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  color:white;
+  position: absolute;
+  top: -1.5rem;
+  left: -1.6rem;
+  
+}
+
+
+h4 {
+  font-weight: thin;
+}
+
+.time-step-detail{
+
+  .bar-detail{
+    background-color: black;
+    width: 2rem;
+    height: 0.3rem;
+    position: relative;
+    left: -3.2rem;
+    bottom: -0.9rem;
+  }
+}
+.step-desc-detail{
+  position: relative;
+  top: -5rem;
+
+  p{
+    line-height: 2rem;
+  }
+}

@@ -1,0 +1,132 @@
+<h1>NEW STACK</h1>
+<div class="main-wrapper">
+  <div class="creation">
+    <div class="stack-controllers">
+      {{!-- <button class="btn-addStep" value="New Step"> Edit Stack Info </button>
+      <button class="btn-addStep" value="New Step"> New Step</button> --}}
+    </div>
+    <div class="stack-mainInfo">
+      <p>Category:</p> <select name="new-category" id="new-category">
+        <option value="learn">Learn</option>
+        <option value="sport">Sport</option>
+        <option value="culture">Culture</option>
+        <option value="spare">Spare</option>
+      </select>
+
+      <p>Time:</p> <select name="new-time" id="new-time">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="4">4</option>
+      </select>
+
+      <p>Title:</p> <input type="text" name="title" id="new-title" value="" placeholder="Name your brand new Stack :)">
+      <p>Description:</p> <input type="text" name="description" id="new-description" value=""
+        placeholder="Short description of the stack">
+      <p>Image:</p>
+          Select file to upload:<input type="file" name="photo" id="stack-image">
+          <a href="#" class="upload-image">SUBIR VIA AXIOS</a>
+          <div class="img-container">
+          
+          </div>
+        
+      <p>Tags:</p> <input type="text" name="tags" id="new-tags" value="" placeholder="Insert Tags divided by commas">
+
+      <button class="btn-stackInfo" value="Add Main Info"> Add info </button>
+
+    </div>
+    <div class="hidden step-creation">
+      <p>Title:</p> <input type="text" name="title" id="step-title" value="" placeholder="Name your brand new Stack :)">
+      <p>Instructions:</p> <input type="text" name="instructions" id="step-instructions" value=""
+        placeholder="Short description of the stack">
+      <p>Add Resource:</p> <select name="source-type" class="source-type">
+        <option value="text" selected="selected">None</option>
+        <option value="spotify">Spotify</option>
+        <option value="youtube">Youtube Embed Video</option>
+        <option value="book">Book</option>
+        <option value="file">Media file (PDF/JPG/PNG)</option>
+        <option value="link">External Link</option>
+      </select>
+
+      <fieldset class="hidden spotify source" form="stack-data" name="spotify">
+        Search in spotify Artist:<input type="text" name="spotify-query" id="spotify-query" value=""><button
+          class="spotify-search">Search on spotify</button>
+
+        <div class="spotify-results">
+          <ul class="spotify-results-list">
+
+          </ul>
+        </div>
+
+      </fieldset>
+
+      <fieldset class="hidden youtube source" form="stack-data" name="youtube">
+        Url:<input type="text" name="youtube-url" id="youtube-link" value="">
+        <button class="insert-youtube">Add youtube Video
+        </button>
+        <div class="youtube-result">
+
+        </div>
+      </fieldset>
+
+      <fieldset class="hidden book source" form="stack-data" name="book">
+        Search book:<input type="text" name="book-title" id="book-title" value="">
+      </fieldset>
+
+      <fieldset class="hidden link source" form="stack-data" name="link">
+        Url:<input type="text" name="link-url" id="link-url" value="">
+      </fieldset>
+
+      <fieldset class="hidden file source" form="stack-data" name="file">
+        
+        Select file to upload:<input type="file" name="selected-doc" id="selected-doc">
+          <a href="#" class="upload-document">SUBIR VIA AXIOS</a>
+          <div class="file-source">
+
+          </div>
+      </fieldset>
+
+      <button class="btn-addStep" value="Create Step"> Add Step </button>
+      <button class="btn-editStackInfo" value=""> Edit Stack Info </button>
+    </div>
+  </div>
+
+  <div class="new-preview">
+    <div id="new-stack-header">
+      <h1 id="new-stack-title">Title</h1>
+      <p id="new-stack-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae, numquam aperiam!
+        Reiciendis voluptatibus quibusdam consequuntur, repellat a cum quos illo quas deserunt omnis accusamus excepturi
+        doloremque aliquid ipsam quae dicta?</p>
+    </div>
+    <div id="new-stack-image">
+      <img class="new-img-stack" src="/images/dummy.jpeg" alt="stack image">
+    </div>
+    <div class="new-stack-steps" id="stepsContainer">
+      <ul class="steps-list">
+        <li>
+          <h2 class="new-step-title">Step title</h2>
+          <p class="new-step-description"> Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+
+        </li>
+      </ul>
+    </div>
+    <button class="save-stack">SAVE STACK</button>
+
+  </div>
+  <form id="stack-data" class="hidden stack-data" action="/stacks/new" method="POST">
+    <input type="hidden" name="title" id="title" value="">
+    <input type="hidden" name="description" id="description" value="">
+    <input type="hidden" name="category" id="category" value="">
+    <input type="hidden" name="tags" id="tags" value="">
+    <input type="hidden" name="time" id="time" value="">
+    <input type="hidden" name="creator" id="creator" value="">
+    <input type="hidden" name="img-url" id="img-url" value="">
+
+    <fieldset class="hidden" form="stack-data" name="step">
+      {{!-- <legend>Personalia:</legend> --}}
+      <input type="hidden" name="step-title" id="step-title" value="">
+      <input type="hidden" name="step-description" id="step-description" value="">
+      <input type="hidden" name="step-resource" id="step-resource" value="">
+    </fieldset>
+
+  </form>
+</div>

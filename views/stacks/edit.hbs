@@ -1,0 +1,41 @@
+<h2>Actualise joven</h2>
+
+<form action="/stacks/{{stack._id}}/edit" method="POST">
+
+<input type="hidden" name="_id" value="{{stack._id}}">
+
+<p> Title:
+<input type="text" name="title" value="{{stack.title}}">
+</p>
+<p> Description:
+<input type="text" name="description" value="{{stack.description}}">
+</p>
+<p> Category:
+<input type="text" name="category" value="{{stack.category}}">
+</p>
+<p> Time:
+<input type="text" name="timeInHours" value="{{stack.timeInHours}}">
+</p>
+<p> Status:
+<input type="text" name="status" value="{{stack.status}}">
+</p>
+<hr>
+    {{#each stack.steps}}
+    <p>STEP:
+ <input type="text" name="order" value="{{order}}">
+      </p>
+      <p>TITLE:
+ <input type="text" name="tittle" value="{{title}}">
+      </p>
+      <p>INSTRUCTIONS:
+ <input type="text" name="instruction" value="{{instruction}}">
+      </p>
+      <p>RESOURCE:
+ <input type="text" name="resource" value="{{resource}}">
+      </p>
+      <hr>
+    {{/each}}
+<input type="submit" class="submit" value="Update">
+</form>
+
+<a href="/stacks/adminpanel">Atrás jovensito</a>

@@ -1,0 +1,64 @@
+<h1>ADMIN PANEL</h1>
+
+<div class="all-stacks">
+  
+  {{#each stacks}}
+    
+    <div class="one-stack">
+      <div class="control-panel">
+      <a href="/stacks/{{_id}}/delete">Delete Stack</a>
+      <a href="/stacks/{{_id}}/edit">Edit Stack</a>
+      </div>
+      <div class="top-preview-display">
+        <h2>{{title}}</h2> 
+        {{#is category "learning"}}
+        <img  class="category-logo" src="/images/learn.png">
+        {{/is}}
+        {{#is category "sport"}}
+        <img  class="category-logo" src="/images/sport.png">
+        {{/is}}
+        {{#is category "culture"}}
+        <img  class="category-logo" src="/images/culture.png">
+        {{/is}}
+        {{#is category "spare"}}
+        <img  class="category-logo" src="/images/spare.png">
+        {{/is}}
+      </div>
+      <div class="image-preview-display">
+        <img src="{{image}}" alt="lol">
+      </div>
+      <div class="description-preview-display">
+        <p> 
+          {{description}}
+        </p>
+      </div>
+      <div class="mid-preview-display"> 
+         <!--    --> 
+        <div class="sources-preview-display">
+          {{#is hasMusic true}}
+          <p><img  class="source-logo" src="/images/music.png"></p>
+          {{/is}}
+          {{#is hasVideo true}}
+          <p><img  class="source-logo" src="/images/video.png"></p>
+          {{/is}}
+          {{#is hasBook true}}
+          <p><img  class="source-logo" src="/images/book.png"></p>
+          {{/is}}
+          {{#is hasLink true}}
+          <p><img  class="source-logo" src="/images/link.png"></p>
+          {{/is}}
+          {{#is hasPdf true}}
+          <p><img  class="source-logo" src="/images/pdf.png"></p>  
+          {{/is}}
+        </div>
+        <div class="time-preview-display">
+        <img  class="time-logo" src="/images/time.png"><h4>{{timeInHours}}h</h4> 
+        </div>
+      </div>
+      <div class="bottom-preview-display">
+        <div class="likes-preview-display"><img  class="category-logo" src="/images/heart.png"><h5>{{likesCounter}}</h5></div>
+          <p> Created by: {{createdBy}} </p>
+      </div>
+    </div>
+  {{/each}}
+<div>
