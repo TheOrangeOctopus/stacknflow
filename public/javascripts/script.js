@@ -18,8 +18,18 @@ let uploadDoc = document.querySelector(".upload-document")
 let uploadDocDomEl = document.querySelector(".file-source")
 
 // General Functions
+function createHiddenInput(classOfParentDomEl,value,id){
+  let parentDomEl = document.querySelector(`.${classOfParentDomEl}`)    
+  let input = document.createElement("input")
+      input.setAttribute(`type`,`hidden`)
+      input.setAttribute(`id`,`${id}`)
+      input.setAttribute(`value`,`${value}`)
+      parentDomEl.appendChild(input)
+}
+
 function uploadPicture(inputID, destinationDomEl) {
   // Upload an image via axios and render instantly inside the destination DOM element.
+  console.log("ha entrado")
   let uploadedImgDomEl = document.createElement("div")
   let img = document.createElement("img")
   let imgContainer = document.querySelector(`${destinationDomEl}`)
@@ -149,21 +159,17 @@ function loadInfoFromEditor() {
 }
 
 function loadStepFromEditor() {
-  let stepsContainerDomEl = document.querySelector(".steps-list")
-  let newStepDomEl = document.createElement("li")
+  
+  let stepsContainerDomEl = document.querySelector(".new-stack-steps")
+  let newStepDomEl = document.createElement("div")
   let newStepTitleDomEl = document.createElement("h2")
   let newStepInstDomEl = document.createElement("p")
   let title = document.querySelector("#step-title").value
   let instructions = document.querySelector("#step-instructions").value
 
   function spotifySourceLoader(container) {
-    let spotifyQueryDomEl = document.querySelector("#spotify-query")
-    let sourceContainerDomEl = document.createElement("div")
-    let sourceDomEl = document.querySelector(".spotify-result")
-    sourceContainerDomEl.setAttribute("Class", "step-source")
-    sourceContainerDomEl.appendChild(sourceDomEl)
+    let sourceContainerDomEl = document.querySelector(".spotify-result")
     container.appendChild(sourceContainerDomEl)
-    spotifyQueryDomEl.value = ""
     newStepDomEl.classList.add("src-spotify")
   }
   function youtubeSourceLoader(container) {
@@ -183,7 +189,9 @@ function loadStepFromEditor() {
     let link = document.querySelector("#link-url").value
 
     a.setAttribute("href", `${link}`)
+    a.setAttribute("class", "link-url")
     a.innerHTML = link
+
 
     sourceContainerDomEl.appendChild(a)
     container.appendChild(sourceContainerDomEl)
@@ -235,14 +243,89 @@ function sendInfoToDB() {
   let image = document.querySelector(".img-source").value
   let steps = []
   let stepsDomEl = document.querySelectorAll(".new-step")
+  let hasMusic;
+  let hasLink;
+  let hasBook;
+  let hasPdf;
+  let hasVideo;
 
-  //works but need to be implemented
+
   stepsDomEl.forEach((step, idx) => {
-    step.classList.value.includes("src-spotify") ? console.log("SPOTIFY"):null
-    step.classList.value.includes("src-youtube") ? console.log("YOUTUBE"):null
-    step.classList.value.includes("src-link") ? console.log("LINK"):null
+    if (step.classList.value.includes("src-spotify")) {
+      let SPsrcTitle = document.querySelector(".src-spotify > .new-step-title").innerText
+      let SPsrcDesc = document.querySelector(".src-spotify > .new-step-description").innerText
+      let SPSongTitle = document.querySelector(".spotify-title").innerText
+      let SPSongArtist= document.querySelector(".spotify-artist").innerText;
+      let SPUri = document.querySelector(".spotify-uri").value
+      let step = {
+        resource: "spotify",
+        title: SPsrcTitle,
+        instruction: SPsrcDesc,
+        order: idx,
+        url: SPUri,
+        songName: SPSongTitle,
+        songArtist: SPSongArtist
+      }
+      hasMusic = true
+      steps.push(step)
+    }
+    if (step.classList.value.includes("src-youtube")) {
+      let YBsrcTitle = document.querySelector(".src-youtube > .new-step-title").innerText
+      let YBsrcDesc = document.querySelector(".src-youtube > .new-step-description").innerText
+      let YBUrl = document.querySelector(".youtube-url").value
+      let step = {
+        resource: "youtube",
+        title: YBsrcTitle,
+        instruction: YBsrcDesc,
+        order: idx,
+        url: YBUrl
+      }
+      hasVideo = true
+      steps.push(step)
+    }
+    if (step.classList.value.includes("src-link")) {
+      let LKsrcTitle = document.querySelector(".src-link > .new-step-title").innerText
+      let LKsrcDesc = document.querySelector(".src-link> .new-step-description").innerText
+      let LKUrl = document.querySelector(".link-url").innerText
+      let step = {
+        resource: "link",
+        title: LKsrcTitle,
+        instruction: LKsrcDesc,
+        order: idx,
+        url: LKUrl
+      }
+      hasLink = true
+      steps.push(step)
+    }
+    if (step.classList.value.includes("src-doc")) {
+      let DCsrcTitle = document.querySelector(".src-doc > .new-step-title").innerText
+      let DCsrcDesc = document.querySelector(".src-doc > .new-step-description").innerText
+      let DCUrl = document.querySelector(".doc-source").value
+      let DCName = document.querySelector(".uploaded-document > p").innerText
+      let step = {
+        resource: "doc",
+        title: DCsrcTitle,
+        instruction: DCsrcDesc,
+        order: idx,
+        url: DCUrl,
+        docName: DCName
+      }
+      hasPdf = true
+      steps.push(step)
+    }
 
-    step.classList.value.includes("src-doc") ? console.log("DOC"):null
+    if (step.classList.value.includes("src-none")) {
+      let NNsrcTitle = document.querySelector(".src-none > .new-step-title").innerText
+      let NNsrcDesc = document.querySelector(".src-none > .new-step-description").innerText
+
+      let step = {
+        resource: "none",
+        title: NNsrcTitle,
+        instruction: NNsrcDesc,
+        order: idx,
+      }
+      steps.push(step)
+    }
 
   })
 
@@ -255,20 +338,13 @@ function sendInfoToDB() {
     timeInHours: timeInHours,
     likesCounter: likesCounter,
     createdBy: createdBy,
-    image: image
-    // steps: [{
-    //   title : String,
-    //   instruction: String,
-    //   resource: String,
-    //   //resource: [{type: Schema.Types.ObjectId,ref: "Resources"}],
-    //   timeInMinutes: Number,
-    //   order:Number,
-    //    }],
-    //   hasMusic: Boolean,
-    //   hasBook: Boolean ,
-    //   hasVideo: Boolean,
-    //   hasLink: Boolean,
-    //   hasPdf: Boolean,
+    image: image,
+    steps: steps,
+    hasMusic: hasMusic,
+    hasBook: hasBook,
+    hasVideo: hasVideo,
+    hasLink: hasLink,
+    hasPdf: hasPdf,
   }
 
   axios.post('/stacks/new', body)
@@ -354,6 +430,7 @@ function spotifySearch() {
     songsFound.data.forEach((song) => {
       let { artist } = song
       let { img } = song
+      let { uri } = song
 
       let songInfoDomel = document.createElement("li")
       let sourceContainer = document.createElement("div")
@@ -363,11 +440,20 @@ function spotifySearch() {
       let artistDomel = document.createElement("p")
       let imgDomel = document.createElement("img")
       let instDomel = document.createElement("span")
+      let uriDomEl = document.createElement("input")
 
+      uriDomEl.setAttribute("type","hidden")
+      uriDomEl.setAttribute("class","spotify-uri")
+      uriDomEl.setAttribute(`value`,`${uri}`)
+      titleDomel.setAttribute("class","spotify-title")
+      artistDomel.setAttribute("class","spotify-artist")
       imgContainer.appendChild(imgDomel)
+      
       infoContainer.appendChild(titleDomel)
       infoContainer.appendChild(artistDomel)
       infoContainer.appendChild(instDomel)
+      infoContainer.appendChild(uriDomEl)
+
       sourceContainer.appendChild(imgContainer)
       sourceContainer.appendChild(infoContainer)
       sourceContainer.setAttribute("class", "spotify-result")
@@ -403,9 +489,15 @@ function youtubeLinkToEmbed() {
   let sourceContainer = document.querySelector(".youtube-result")
   let youtubeContainer = document.createElement("div")
   let iframeYoutube = document.createElement("iframe")
+  let youtubeHidden = document.createElement("input")
+
+  youtubeHidden.setAttribute("type","hidden")
+  youtubeHidden.setAttribute("class","youtube-url")
+  youtubeHidden.setAttribute(`value`,`${youtubeEmbed}`)
   iframeYoutube.setAttribute(`src`, `${youtubeEmbed}`)
   youtubeContainer.setAttribute("class", "youtube-video")
   youtubeContainer.appendChild(iframeYoutube)
+  youtubeContainer.appendChild(youtubeHidden)
   sourceContainer.appendChild(youtubeContainer)
 }
 
