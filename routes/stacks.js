@@ -207,6 +207,22 @@ router.get("/adminpanel", (req, res, next) => {
     });
 });
 
+router.get("/adminpanel/pendingpanel", (req, res, next) => {
+  Stacks.find({status: "pending"})
+  .sort({"created_at": 1})
+    .lean()
+    .then(allStacks =>
+      res.render("pendingpanel", { 
+        stacks: allStacks,
+        user: req.user,
+        })
+    )
+    .catch(function() {
+      next();
+      throw new Error("There's an error.");
+    });
+});
+
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
@@ -251,6 +267,8 @@ router.post('/uploadPicture', uploadPictureCloud.single("image"), (req, res, nex
 router.post('/uploadDocument', uploadDocumentCloud.single("document"), (req, res, next) => {
   res.json(req.file)  
 });
+
+// Login Google
 
 
 
