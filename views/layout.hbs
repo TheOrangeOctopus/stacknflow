@@ -20,6 +20,12 @@
 
 </a>
     </div>
+    {{#if user}}
+    <div>
+      <a href="/stacks/new">SUGGEST A NEW COOL STACK</a>
+      <a href="/collection">My collection</a>
+    </div>
+    {{/if}}
     <div>
       
       {{#unless user}}
@@ -30,7 +36,7 @@
       {{#is user.rol "admin"}}
       <a href="/stacks/adminpanel"> Admin Panel</a>
       {{/is}}
-      <a href="/collection">My collection</a>
+      
       <a href="/logout">Logout</a>
         {{/if}}
       

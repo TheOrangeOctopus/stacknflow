@@ -354,45 +354,59 @@ function sendInfoToDB() {
 }
 
 //Login Display Toggle
-loginDisplay.addEventListener("click", function (e) {
-  e.preventDefault()
-  fadeInDOMEl(loginDomEl, "hidden", 150)
-  /* loginDomEl.classList.toggle("hidden") */
-})
-closeLoginDisplay.addEventListener("click", function (e) {
-  e.preventDefault()
-  fadeOutDOMEl(loginDomEl, "hidden", 150)
-})
+if(loginDisplay !== null){
+  loginDisplay.addEventListener("click", function (e) {
+    e.preventDefault()
+    fadeInDOMEl(loginDomEl, "hidden", 150)
+  })
+}
+
+if(closeLoginDisplay !== null){
+  closeLoginDisplay.addEventListener("click", function (e) {
+    e.preventDefault()
+    fadeOutDOMEl(loginDomEl, "hidden", 150)
+  })
+}
+
+if(uploadStackPic !== null){
+  uploadStackPic.addEventListener("click", function (e) {
+    e.preventDefault()
+    uploadPicture("#stack-image", ".img-container")
+  })
+}
 
 //New Stack Handlers
-uploadStackPic.addEventListener("click", function (e) {
-  e.preventDefault()
-  uploadPicture("#stack-image", ".img-container")
-})
 
+if(uploadStackPic !== null){
 uploadDoc.addEventListener("click", function (e) {
   e.preventDefault()
   uploadDocument("#selected-doc", ".file-source")
 })
+}
 
-
+if(uploadStackPic !== null){
 addInfoBtn.addEventListener("click", function (e) {
   e.preventDefault()
   toggleClass2DOMEl(mainInfoDomEl, stepDomEl, "hidden", 300)
   loadInfoFromEditor()
 })
+}
 
+if(uploadStackPic !== null){
 addStepBtn.addEventListener("click", function (e) {
   e.preventDefault()
   loadStepFromEditor()
 })
+}
 
-
+if(uploadStackPic !== null){
 editStackInfoBtn.addEventListener("click", function (e) {
   e.preventDefault()
   toggleClass2DOMEl(stepDomEl, mainInfoDomEl, "hidden", 300)
 })
+}
 
+if(uploadStackPic !== null){
 sourceTypeDomEl.addEventListener("change", function (e) {
   e.preventDefault()
   sourcesDomEl.forEach((e) => {
@@ -400,21 +414,28 @@ sourceTypeDomEl.addEventListener("change", function (e) {
   })
   document.querySelector(`.${sourceTypeDomEl.value}`).classList.toggle("hidden")
 })
+}
 
+if(uploadStackPic !== null){
 spotifySearchDomEl.addEventListener("click", function (e) {
   e.preventDefault()
   spotifySearch()
 })
+}
 
+if(uploadStackPic !== null){
 youtubeBtn.addEventListener("click", function (e) {
   e.preventDefault()
   youtubeLinkToEmbed()
 })
+}
 
+if(uploadStackPic !== null){
 saveStackBtn.addEventListener("click", function (e) {
   e.preventDefault()
   sendInfoToDB()
 })
+}
 
 
 
