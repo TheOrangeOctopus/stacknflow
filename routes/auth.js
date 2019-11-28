@@ -16,9 +16,20 @@ router.post("/login", passport.authenticate("local", {
   passReqToCallback: true
 }));
 
+router.post("stacks/login", passport.authenticate("local", {
+  successRedirect: "/stacks/",
+  failureRedirect: "/stacks/",
+  failureFlash: true,
+  passReqToCallback: true
+}));
+
 
 
 router.get("/signup", (req, res, next) => {
+  res.render("auth/signup");
+});
+
+router.get("stacks/signup", (req, res, next) => {
   res.render("auth/signup");
 });
 
@@ -54,8 +65,21 @@ router.post("/signup", (req, res, next) => {
   });
 });
 
+
+
 router.get(
   "/google",
+  passport.authenticate("google", {
+    scope: [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email"
+    ]
+  })
+  
+);
+
+router.get(
+  "stacks/google",
   passport.authenticate("google", {
     scope: [
       "https://www.googleapis.com/auth/userinfo.profile",
@@ -71,6 +95,15 @@ router.get(
     failureRedirect: "/stacks" // here you would redirect to the login page using traditional login approach
   })
 );
+
+router.get(
+  "stacks/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/stacks",
+    failureRedirect: "/stacks" // here you would redirect to the login page using traditional login approach
+  })
+);
+
 
 
 
