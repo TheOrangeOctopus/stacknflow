@@ -26,20 +26,20 @@
           <p>{{instruction}}</p>
         </div>
         <div class="step-source-detail">
-          {{#is hasVideo true}}
+          {{#is resource "youtube"}}
           <div class="step-youtube">
             <iframe src="{{url}}" frameborder="0" class="youtube-embed"></iframe>
           </div>
           {{/is}}
-          {{#is hasMusic true}}
+          {{#is resource "spotify"}}
           <div class="step-spotify">
 
-            <iframe class="spotify-embed" src="{{url}}" frameborder="0" allowtransparency="true"
+            <iframe class="spotify-embed" src="http://open.spotify.com/embed/track/{{url}}" frameborder="0" allowtransparency="true"
               allow="encrypted-media">
             </iframe>
           </div>
           {{/is}}
-          {{#is hasBook true}}
+          {{#is resource "book"}}
           <div class="step-googlebook">
             <div class="google-img"><a href="{{url}}"><img src="{{bookImage}}" alt="METE EL ENLACE AL LIBRO, BRO">
               </a></div>
@@ -52,7 +52,7 @@
             </div>
           </div>
           {{/is}}
-          {{#is hasPdf true}}
+          {{#is resource "doc"}}
           <div class="step-doc">
             <div class="doc-img"><a href="{{url}}"><img src="/images/pdf.png" alt="METE EL ENLACE AL LIBRO, BRO">
               </a></div>
@@ -64,7 +64,7 @@
             </div>
           </div>
           {{/is}}
-          {{#is hasLink true}}
+          {{#is resource "link"}}
           <div class="google-desc">
             <a href="{{url}}">{{url}}</a>
           </div>
