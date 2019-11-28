@@ -1,131 +1,156 @@
-
 <div class="new-stack-wrapper">
-  <div class="creation">
-    <h1>NEW STACK</h1>
-    <div class="stack-controllers">
-      {{!-- <button class="btn-addStep" value="New Step"> Edit Stack Info </button>
-      <button class="btn-addStep" value="New Step"> New Step</button> --}}
-    </div>
-    <div class="stack-mainInfo">
-      <p>Category:</p> <select name="new-category" id="new-category">
-        <option value="learn">Learn</option>
-        <option value="sport">Sport</option>
-        <option value="culture">Culture</option>
-        <option value="spare">Spare</option>
-      </select>
-
-      <p>Time:</p> <select name="new-time" id="new-time">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="4">4</option>
-      </select>
-
-      <p>Title:</p> <input type="text" name="title" id="new-title" value="" placeholder="Name your brand new Stack :)">
-      <p>Description:</p> <input type="text" name="description" id="new-description" value=""
-        placeholder="Short description of the stack">
-      <p>Image:</p>
-          Select file to upload:<input type="file" name="photo" id="stack-image">
-          <a class="upload-image">SUBIR VIA AXIOS</a>
-          <div class="img-container">
-          
+  <div class="creation-border">
+    <div class="creation">
+      <h1>CREATE YOUR STACK</h1>
+      <div class="stack-mainInfo">
+        <h3>First: Select the category and the time that takes your stack to finish:</h3>
+        <div class="stack-categorytime">
+          <div>
+            <p>Category:</p> <select name="new-category" id="new-category">
+              <option value="learn">Learn</option>
+              <option value="sport">Sport</option>
+              <option value="culture">Culture</option>
+              <option value="spare">Spare</option>
+            </select>
           </div>
-        
-      <p>Tags:</p> <input type="text" name="tags" id="new-tags" value="" placeholder="Insert Tags divided by commas">
-
-      <button class="btn-stackInfo" value="Add Main Info"> Add info </button>
-
-    </div>
-    <div class="hidden step-creation">
-      <p>Title:</p> <input type="text" name="title" id="step-title" value="" placeholder="Name your brand new Stack :)">
-      <p>Instructions:</p> <textarea name="instructions" id="step-instructions" value=""
-        placeholder="Short description of the stack"></textarea>
-      <p>Add Resource:</p> <select name="source-type" class="source-type">
-        <option value="text" selected="selected">None</option>
-        <option value="spotify">Spotify</option>
-        <option value="youtube">Youtube Embed Video</option>
-        <option value="book">Book</option>
-        <option value="file">Media file (PDF/JPG/PNG)</option>
-        <option value="link">External Link</option>
-      </select>
-
-      <fieldset class="hidden spotify source" form="stack-data" name="spotify">
-        Search in spotify Artist:<input type="text" name="spotify-query" id="spotify-query" value=""><button
-          class="spotify-search">Search on spotify</button>
-
-        <div class="spotify-results">
-          <ul class="spotify-results-list">
-
-          </ul>
-        </div>
-
-      </fieldset>
-
-      <fieldset class="hidden youtube source" form="stack-data" name="youtube">
-        Url:<input type="text" name="youtube-url" id="youtube-link" value="">
-        <button class="insert-youtube">Add youtube Video
-        </button>
-        <div class="youtube-result">
+          <div>
+            <p>Time:</p> <select name="new-time" id="new-time">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="4">4</option>
+            </select>
+          </div>
 
         </div>
-      </fieldset>
+        <h3>Second: Add a fancy name and a brief description to your Stack.</h3>
+        <p>You can also add Tags separated by commas:)</p>
+        <div class="stack-titledesc">
+          <p>Title:</p> <input type="text" name="title" id="new-title" value=""
+            placeholder="Name your brand new Stack :)">
+          <p>Description:</p> <input type="text" name="description" id="new-description" value=""
+            placeholder="Short description of the stack">
+          <p>Tags:</p> <input type="text" name="tags" id="new-tags" value=""
+            placeholder="Insert Tags divided by commas">
 
-      <fieldset class="hidden book source" form="stack-data" name="book">
-        Search book:<input type="text" name="book-title" id="book-title" value="">
-      </fieldset>
+        </div>
+        <h3>Third: Ok! Now its time to customize your stack's look. Upload a picture!</h3>
+        {{!-- <p>If you don't want to upload it, don't worry, we will add one for you</p> --}}
+        <div class="stack-imageupload">
+          <div class="imageupload-select">
+            <p>Select the image:</p>
+            <input type="file" name="photo" id="stack-image">
+            <a class="upload-image">UPLOAD</a>
+          </div>
+          <div class="img-container">
+          </div>
+        </div>
+        <h3>You are ready to start adding steps to your stack. Go ahead!</h3>
+        <button class="btn-stackInfo" value="Add Main Info"> ADD INFO TO MY PREVIEW <i class="fas fa-plus"></i></button>
+      </div>
+      <div class="hidden step-creation">
+        <div class="stack-titledesc">
+          <h3>Create one Step</h3>
+          <p>Remember that each step may contain the Title and the instructions to guide the people through the stack. Of course, it could contain a source (file, music, youtube video...).</p>
+          <p>Dont`t worry about the step's order from now, you can do it later in the preview ;)</p>
+          <p>Title:</p> <input type="text" name="title" id="step-title" value=""
+            placeholder="Name your brand new Stack :)">
+          <p>Instructions:</p> <textarea name="instructions" id="step-instructions" value=""
+            placeholder="Short description of the stack"></textarea>
+        </div>
+        <div class="source-creation">
 
-      <fieldset class="hidden link source" form="stack-data" name="link">
-        Url:<input type="text" name="link-url" id="link-url" value="">
-      </fieldset>
+<p>Add Resource:</p> <select name="source-type" class="source-type">
+          <option value="text" selected="selected">None</option>
+          <option value="spotify">Spotify</option>
+          <option value="youtube">Youtube Embed Video</option>
+          <option value="book">Book</option>
+          <option value="file">Media file (PDF/JPG/PNG)</option>
+          <option value="link">External Link</option>
+        </select>
 
-      <fieldset class="hidden file source" form="stack-data" name="file">
-        
-        Select file to upload:<input type="file" name="selected-doc" id="selected-doc">
+        <fieldset class="hidden spotify source" form="stack-data" name="spotify">
+          Search in spotify Artist:<input type="text" name="spotify-query" id="spotify-query" value=""><button
+            class="spotify-search">Search on spotify</button>
+
+          <div class="spotify-results">
+            <ul class="spotify-results-list">
+
+            </ul>
+          </div>
+
+        </fieldset>
+
+        <fieldset class="hidden youtube source" form="stack-data" name="youtube">
+          Url:<input type="text" name="youtube-url" id="youtube-link" value="">
+          <button class="insert-youtube">Add youtube Video
+          </button>
+          <div class="youtube-result">
+
+          </div>
+        </fieldset>
+
+        <fieldset class="hidden book source" form="stack-data" name="book">
+          Search book:<input type="text" name="book-title" id="book-title" value="">
+        </fieldset>
+
+        <fieldset class="hidden link source" form="stack-data" name="link">
+          Url:<input type="text" name="link-url" id="link-url" value="">
+        </fieldset>
+
+        <fieldset class="hidden file source" form="stack-data" name="file">
+
+          Select file to upload:<input type="file" name="selected-doc" id="selected-doc">
           <a href="#" class="upload-document">SUBIR VIA AXIOS</a>
           <div class="file-source">
 
           </div>
-      </fieldset>
-
-      <button class="btn-addStep" value="Create Step"> Add Step </button>
-      <button class="btn-editStackInfo" value=""> Edit Stack Info </button>
+        </fieldset>
+        </div>
+        
+      <div class="step-controllers">
+        <button class="btn-editStackInfo" value=""> <i class="fas fa-chevron-left"></i> EDIT STACK INFO </button>
+        <button class="btn-addStep" value="Create Step"> ADD STEP <i class="fas fa-plus"></i> </button>
+      </div>
+      </div>
     </div>
   </div>
 
   <div class="new-preview">
     <div class="new-border">
-    <div id="new-stack-header">
-      <h2 id="new-stack-title">Title</h2>
-      <p id="new-stack-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae, numquam aperiam!
-        Reiciendis voluptatibus quibusdam consequuntur, repellat a cum quos illo quas deserunt omnis accusamus excepturi
-        doloremque aliquid ipsam quae dicta?</p>
+      <div id="new-stack-header">
+        <h2 id="new-stack-title">Title</h2>
+        <p id="new-stack-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae, numquam aperiam!
+          Reiciendis voluptatibus quibusdam consequuntur, repellat a cum quos illo quas deserunt omnis accusamus
+          excepturi
+          doloremque aliquid ipsam quae dicta?</p>
+      </div>
+      <div id="new-stack-image">
+        <img class="new-img-stack" src="/images/dummy.jpg" alt="stack image">
+      </div>
+      <div class="new-stack-steps" id="stepsContainer">
+
+      </div>
+      <button class="save-stack">SAVE STACK</button>
+
+
+      <form id="stack-data" class="hidden stack-data" action="/stacks/new" method="POST">
+        <input type="hidden" name="title" id="title" value="">
+        <input type="hidden" name="description" id="description" value="">
+        <input type="hidden" name="category" id="category" value="">
+        <input type="hidden" name="tags" id="tags" value="">
+        <input type="hidden" name="time" id="time" value="">
+        <input type="hidden" name="creator" id="creator" value="">
+        <input type="hidden" name="img-url" id="img-url" value="">
+
+        <fieldset class="hidden" form="stack-data" name="step">
+          {{!-- <legend>Personalia:</legend> --}}
+          <input type="hidden" name="step-title" id="step-title" value="">
+          <input type="hidden" name="step-description" id="step-description" value="">
+          <input type="hidden" name="step-resource" id="step-resource" value="">
+        </fieldset>
+
+      </form>
+
     </div>
-    <div id="new-stack-image">
-      <img class="new-img-stack" src="/images/dummy.jpg" alt="stack image">
-    </div>
-    <div class="new-stack-steps" id="stepsContainer">
-      
-    </div>
-    <button class="save-stack">SAVE STACK</button>
-
-  
-  <form id="stack-data" class="hidden stack-data" action="/stacks/new" method="POST">
-    <input type="hidden" name="title" id="title" value="">
-    <input type="hidden" name="description" id="description" value="">
-    <input type="hidden" name="category" id="category" value="">
-    <input type="hidden" name="tags" id="tags" value="">
-    <input type="hidden" name="time" id="time" value="">
-    <input type="hidden" name="creator" id="creator" value="">
-    <input type="hidden" name="img-url" id="img-url" value="">
-
-    <fieldset class="hidden" form="stack-data" name="step">
-      {{!-- <legend>Personalia:</legend> --}}
-      <input type="hidden" name="step-title" id="step-title" value="">
-      <input type="hidden" name="step-description" id="step-description" value="">
-      <input type="hidden" name="step-resource" id="step-resource" value="">
-    </fieldset>
-
-  </form>
-
-  </div>
   </div>
 </div>

@@ -16,6 +16,30 @@ let youtubeBtn = document.querySelector(".insert-youtube")
 let uploadStackPic = document.querySelector(".upload-image")
 let uploadDoc = document.querySelector(".upload-document")
 let uploadDocDomEl = document.querySelector(".file-source")
+let stepsContainer = document.querySelector("#stepsContainer")
+
+
+
+/////// SORTABLE
+
+
+
+
+///// VIVUS
+
+const myVivus = new Vivus('mainlogo', {
+  type: 'scenario',
+  duration: 100,
+  start: 'autostart'
+});
+
+  setInterval(function(){
+    myVivus
+    .stop()
+    .reset()
+    .play(1)
+  },10000)
+  
 
 // General Functions
 function createHiddenInput(classOfParentDomEl,value,id){
@@ -130,7 +154,7 @@ function loadInfoFromEditor() {
   let previewFormTimeDomEl = document.querySelector("#time")
   let previewFormImg = document.querySelector(".new-img-stack")
   let previewImgContainer = document.querySelector("#new-stack-image")
-
+  
   //let previewFormCreatorDomEl = document.querySelector("#creator")
 
   let title = document.querySelector("#new-title").value
@@ -160,12 +184,13 @@ function loadInfoFromEditor() {
 
 function loadStepFromEditor() {
   
-  let stepsContainerDomEl = document.querySelector(".new-stack-steps")
+  
   let newStepDomEl = document.createElement("div")
   let newStepTitleDomEl = document.createElement("h3")
   let newStepInstDomEl = document.createElement("p")
   let title = document.querySelector("#step-title").value
   let instructions = document.querySelector("#step-instructions").value
+  let stepsContainerDomEl = document.querySelector("#stepsContainer")
 
   function spotifySourceLoader(container) {
     let sourceContainerDomEl = document.querySelector(".spotify-result")
@@ -377,36 +402,40 @@ if(uploadStackPic !== null){
 
 //New Stack Handlers
 
-if(uploadStackPic !== null){
+if(uploadDoc!== null){
 uploadDoc.addEventListener("click", function (e) {
   e.preventDefault()
   uploadDocument("#selected-doc", ".file-source")
 })
 }
 
-if(uploadStackPic !== null){
+if(addInfoBtn !== null){
 addInfoBtn.addEventListener("click", function (e) {
   e.preventDefault()
   toggleClass2DOMEl(mainInfoDomEl, stepDomEl, "hidden", 300)
   loadInfoFromEditor()
+  new Sortable(stepsContainer, {
+  animation: 150,
+  ghostClass: 'ghost'
+});
 })
 }
 
-if(uploadStackPic !== null){
+if(addStepBtn!== null){
 addStepBtn.addEventListener("click", function (e) {
   e.preventDefault()
   loadStepFromEditor()
 })
 }
 
-if(uploadStackPic !== null){
+if(editStackInfoBtn !== null){
 editStackInfoBtn.addEventListener("click", function (e) {
   e.preventDefault()
   toggleClass2DOMEl(stepDomEl, mainInfoDomEl, "hidden", 300)
 })
 }
 
-if(uploadStackPic !== null){
+if(sourceTypeDomEl!== null){
 sourceTypeDomEl.addEventListener("change", function (e) {
   e.preventDefault()
   sourcesDomEl.forEach((e) => {
@@ -416,21 +445,21 @@ sourceTypeDomEl.addEventListener("change", function (e) {
 })
 }
 
-if(uploadStackPic !== null){
+//if(spotifySearchDomEl !== null){
 spotifySearchDomEl.addEventListener("click", function (e) {
   e.preventDefault()
   spotifySearch()
 })
-}
+//}
 
-if(uploadStackPic !== null){
+if(youtubeBtn !== null){
 youtubeBtn.addEventListener("click", function (e) {
   e.preventDefault()
   youtubeLinkToEmbed()
 })
 }
 
-if(uploadStackPic !== null){
+if(saveStackBtn!== null){
 saveStackBtn.addEventListener("click", function (e) {
   e.preventDefault()
   sendInfoToDB()
@@ -524,9 +553,4 @@ function youtubeLinkToEmbed() {
 
 
 
-/////// SORTABLE
-
-new Sortable(stepsContainer, {
-  animation: 150,
-  ghostClass: 'ghost'
-});
+  

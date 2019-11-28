@@ -3,6 +3,37 @@
   background: rgba(61, 88, 99,1);
 }
 
+////
+
+
+.stack-categorytime {
+  position: relative;
+}
+
+.stack-categorytime select {
+  background-color: $white;
+  color: $primarycolor;
+  padding: 1rem;
+  width: 10rem;
+  border: 2px solid $primarycolor;
+  font-size: 1.8rem;
+  -webkit-appearance: select;
+  appearance: select;
+  outline: none;
+  border-radius:0;
+}
+
+
+
+
+
+h3{
+  font-size: 1.6em;
+  margin:0rem 0 1rem 0;
+  color: $primarycolor;
+}
+
+////
 
 .new-stack-wrapper{
   width:100%;
@@ -19,44 +50,131 @@
   }
 
   h2{
-    font-size:3rem;
+    font-size:2.5rem;
     color:$primarycolor;
     padding:0;
-    background:none;
+    background:none;  
   }
-
   textarea{
     width:100%;
   }
 }
 
-.creation{
-  padding:4rem;
+.creation-border{
+  display: flex;
   width:50%;
-  display:flex;
-  flex-direction: column;
-  align-items: flex-start;
   background-color: $primarycolor;
-  min-height:100vh;
-
-.stack-controllers{
-  background-color:rgba(23, 126, 167, 0.815);
-  width:100%;
+  padding:2rem;
+  min-height:90vh;
+  
 }
 
+h1{
+  margin:2rem 0;
+}
+
+.creation{
+  padding:2rem 4rem;
+  width:100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $white;
+
+  input{
+    margin-top:0rem;
+    padding:0.75rem;
+  }
+
 .stack-mainInfo{
-  background-color:rgba(66, 199, 110, 0.15);
+  background-color:$white;
   width:100%;
   display:flex;
   flex-wrap:wrap;
 }
 
 .step-creation{
-  background-color:rgba(193, 118, 223, 0.3);
   width:100%;
   display:flex;
   flex-wrap:wrap;
 
+}
+.stack-titledesc{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  margin:1rem 0 2rem 0;
+  input{
+    border: 2px solid $primarycolor;
+  }
+ 
+}
+
+
+.stack-imageupload{
+  display: flex;
+  flex-direction: column;
+  margin:1rem 0 2rem 0;
+}
+
+.imageupload-select{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  a{
+    background-color: $primarycolor;
+    color: $white;
+    padding:1rem 2rem;
+    border:2px solid $white;
+    transition: 0.3s;
+  }
+  a:hover{
+    background-color: $white;
+    border:2px solid $primarycolor;
+    color: $primarycolor;
+    padding:1rem 2rem;
+    transition: 0.3s;
+    cursor:pointer;
+  }
+  a:active{
+    transform: scale(0.8);
+  }
+  input{
+    appearance: none;
+  }
+}
+
+.img-container{
+  width:100%;
+
+  img{
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+.stack-categorytime{
+  display:flex;
+  justify-content: flex-start;
+  
+  width:100%;
+  div{
+    margin:1rem 0 2rem 0;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+  div:last-of-type{
+    margin-left:4rem;
+  }
+  p{
+    margin-right:2rem;
+    padding:0;
+  }
+}
+
+.stack-creation{
+  width:100%;
 }
 
 
@@ -65,6 +183,12 @@
 .new-border{
   border: 2px solid $primarycolor;
   padding:2rem;
+}
+
+.btn-stackInfo,
+.btn-addStep,
+.btn-editStackInfo{
+  font-size:1.4rem;
 }
 
 .new-preview{
@@ -193,4 +317,16 @@
   border-bottom: 2px solid $primarycolor;
   transition:all 0.3s;
   margin-bottom:2px;
+}
+
+.source-creation{
+  display:flex;
+  flex-direction: column;
+  width:100%;
+}
+
+.step-controllers{
+  width:100%;
+  display: flex;
+  justify-content: space-between;
 }

@@ -1,68 +1,61 @@
 nav {
   height: 8rem;
   // background-color: cornflowerblue;
-  background-color:#ffffff;
+  background-color:$primarycolorSoft;
   display:flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   left: 0;
   width: 100%; /* Full width */
-  z-index: 1000;
-  border-bottom:2px solid $primarycolor;
+  z-index: 100;
+  // border-bottom:2px solid $primarycolor;
 }
 
 nav a{
   text-decoration: none;
+  font-size: 1.6rem;
 }
 
 nav div{
   margin: 0 1rem;
   a{
     margin: 0 1rem;
+    padding:1rem 2rem;
+    transform: translateX(0);
+  }
+  a:hover{
+    margin: 0 1rem;
+    background-color: $primarycolor;
+    color:$white;
+    transition: 0.3s ease-out;
+  }
+  a:active{
+    border:2px solid $primarycolor;
+    color:$primarycolor;
+    background-color: $white;
   }
 }
 
-.login-box{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  background-color: red;
-  position: fixed;
-  width: 25rem;
-  right: 1.7rem; 
-  top: 5rem;
-  z-index: 500;
-  .close-login{
-    position: fixed;
-    top:5rem;
-    right: 1.5rem;
-  }
-  .login-fields{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    
-    background-color: saddlebrown;
-    
-    margin: 0.3rem 0.5rem;
-    
-    
-    label {
-    margin: 0.2rem 0.5rem;
-
-    }
-    input {
-    margin: 0.3 rem 0;
-    }
-  }
+.logo-wrapper{
+  padding:0;
+  margin-left:15rem;
 }
-.logins-buttons{
+
+.mainlogo{
+  fill:$primarycolor;
+  stroke-dashoffset: 1px;
+  width:18rem;
+  align-self: center;
+}
+
+.nav-center{
   display:flex;
   flex-direction: row;
-  justify-content: space-around;
-  margin:1rem 0;
+  justify-content: space-between;
+  align-items: center;
+  width: $globalwidth;
+  max-width:$maxwidth;
 }
