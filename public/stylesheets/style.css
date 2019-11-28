@@ -268,6 +268,181 @@ button:active {
   position: relative;
   top: 1px; }
 
+.le-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 85%;
+  max-width: 1150px;
+  margin-top: 1rem; }
+  .le-filter .le-fix {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    /* .le-likes{
+	display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+	flex-wrap: nowrap;
+	margin: 1rem;
+	  .le-big-like{
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50%;
+		border: 0.1rem solid $primarycolor;
+		padding: 0.4rem 0.9rem;
+		margin: 0rem 0.5rem;
+		cursor: pointer;
+		
+		.special{
+			margin:0;
+			padding:0;	
+		}
+	  }
+	  
+  } */ }
+    .le-filter .le-fix .le-time {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      margin: 0.5rem; }
+      .le-filter .le-fix .le-time .le-sub-time {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+        border-radius: 42%;
+        border: 0.1rem solid #145B82;
+        padding: 0.4rem 0.9rem;
+        margin: 0rem 0.3rem;
+        cursor: pointer;
+        color: #145B82; }
+    .le-filter .le-fix .le-category {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      margin: 0.5rem; }
+      .le-filter .le-fix .le-category .le-sport {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 40%;
+        border: 0.1rem solid #145B82;
+        padding: 0.4rem 1.3rem;
+        margin: 0rem 0.3rem;
+        cursor: pointer; }
+      .le-filter .le-fix .le-category .le-spare {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 40%;
+        border: 0.1rem solid #145B82;
+        padding: 0.4rem 1.3rem;
+        margin: 0rem 0.3rem;
+        cursor: pointer; }
+      .le-filter .le-fix .le-category .le-culture {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 40%;
+        border: 0.1rem solid #145B82;
+        padding: 0.4rem 1.3rem;
+        margin: 0rem 0.3rem;
+        cursor: pointer; }
+      .le-filter .le-fix .le-category .le-learning {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 40%;
+        border: 0.1rem solid #145B82;
+        padding: 0.4rem 1.3rem;
+        margin: 0rem 0.3rem;
+        cursor: pointer; }
+    .le-filter .le-fix .le-source {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      margin: 0.5rem; }
+      .le-filter .le-fix .le-source .le-spotify {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 45%;
+        border: 0.1rem solid #145B82;
+        padding: 0.4rem 0.7rem;
+        margin: 0rem 0.3rem;
+        cursor: pointer; }
+        .le-filter .le-fix .le-source .le-spotify .fix {
+          margin: 0;
+          padding: 0; }
+      .le-filter .le-fix .le-source .le-youtube {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 45%;
+        border: 0.1rem solid #145B82;
+        padding: 0.4rem 0.6rem;
+        margin: 0rem 0.3rem;
+        cursor: pointer; }
+        .le-filter .le-fix .le-source .le-youtube .fix {
+          margin: 0;
+          padding: 0; }
+      .le-filter .le-fix .le-source .le-book {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 45%;
+        border: 0.1rem solid #145B82;
+        padding: 0.4rem 0.8rem;
+        margin: 0rem 0.3rem;
+        cursor: pointer; }
+        .le-filter .le-fix .le-source .le-book .fix {
+          margin: 0;
+          padding: 0; }
+      .le-filter .le-fix .le-source .le-media {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 45%;
+        border: 0.1rem solid #145B82;
+        padding: 0.4rem 0.9rem;
+        margin: 0rem 0.3rem;
+        cursor: pointer; }
+        .le-filter .le-fix .le-source .le-media .fix {
+          margin: 0;
+          padding: 0; }
+      .le-filter .le-fix .le-source .le-link {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 45%;
+        border: 0.1rem solid #145B82;
+        padding: 0.4rem 0.7rem;
+        margin: 0rem 0.3rem;
+        cursor: pointer; }
+        .le-filter .le-fix .le-source .le-link .fix {
+          margin: 0;
+          padding: 0; }
+
 .all-stacks {
   display: flex;
   flex-wrap: wrap;
@@ -334,8 +509,7 @@ button:active {
   .autor p {
     color: #145B82; }
 
-.autor
-.fa-heart-loved {
+.autor .fa-heart-loved {
   color: #b52424;
   font-size: 2.5rem; }
 

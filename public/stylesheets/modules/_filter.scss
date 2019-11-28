@@ -1,0 +1,198 @@
+.le-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: $globalwidth;
+  max-width: $maxwidth;
+  margin-top: 1rem;
+  .le-fix {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: nowrap;
+    .le-time {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      margin: 0.5rem;
+      .le-sub-time {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+        border-radius: 42%;
+        border: 0.1rem solid $primarycolor;
+        padding: 0.4rem 0.9rem;
+        margin: 0rem 0.3rem;
+		cursor: pointer;
+		color:$primarycolor;
+      }
+    }
+
+    .le-category {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      margin: 0.5rem;
+
+      .le-sport {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 40%;
+        border: 0.1rem solid $primarycolor;
+        padding: 0.4rem 1.3rem;
+        margin: 0rem 0.3rem;
+        cursor: pointer;
+      }
+      .le-spare {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 40%;
+        border: 0.1rem solid $primarycolor;
+        padding: 0.4rem 1.3rem;
+        margin: 0rem 0.3rem;
+        cursor: pointer;
+      }
+      .le-culture {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 40%;
+        border: 0.1rem solid $primarycolor;
+        padding: 0.4rem 1.3rem;
+        margin: 0rem 0.3rem;
+        cursor: pointer;
+      }
+      .le-learning {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 40%;
+        border: 0.1rem solid $primarycolor;
+        padding: 0.4rem 1.3rem;
+        margin: 0rem 0.3rem;
+        cursor: pointer;
+      }
+    }
+
+    .le-source {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      margin: 0.5rem;
+      .le-spotify {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 45%;
+        border: 0.1rem solid $primarycolor;
+        padding: 0.4rem 0.7rem;
+        margin: 0rem 0.3rem;
+        cursor: pointer;
+        .fix {
+          margin: 0;
+          padding: 0;
+        }
+      }
+      .le-youtube {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 45%;
+        border: 0.1rem solid $primarycolor;
+        padding: 0.4rem 0.6rem;
+        margin: 0rem 0.3rem;
+        cursor: pointer;
+        .fix {
+          margin: 0;
+          padding: 0;
+        }
+      }
+      .le-book {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 45%;
+        border: 0.1rem solid $primarycolor;
+        padding: 0.4rem 0.8rem;
+        margin: 0rem 0.3rem;
+        cursor: pointer;
+        .fix {
+          margin: 0;
+          padding: 0;
+        }
+      }
+      .le-media {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 45%;
+        border: 0.1rem solid $primarycolor;
+        padding: 0.4rem 0.9rem;
+        margin: 0rem 0.3rem;
+        cursor: pointer;
+        .fix {
+          margin: 0;
+          padding: 0;
+        }
+      }
+      .le-link {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 45%;
+        border: 0.1rem solid $primarycolor;
+        padding: 0.4rem 0.7rem;
+        margin: 0rem 0.3rem;
+        cursor: pointer;
+        .fix {
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+
+    /* .le-likes{
+	display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+	flex-wrap: nowrap;
+	margin: 1rem;
+	  .le-big-like{
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50%;
+		border: 0.1rem solid $primarycolor;
+		padding: 0.4rem 0.9rem;
+		margin: 0rem 0.5rem;
+		cursor: pointer;
+		
+		.special{
+			margin:0;
+			padding:0;	
+		}
+	  }
+	  
+  } */
+  }
+}
