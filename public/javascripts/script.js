@@ -485,7 +485,7 @@ if(uploadStackPic !== null){
 function spotifySearch() {
   let spotifyQuery = document.querySelector("#spotify-query").value
   let spotifyResults = document.querySelector(".spotify-results-list")
-  axios.get(`http://localhost:3000/stacks/spotifyAPI/${spotifyQuery}`).then(songsFound => {
+  axios.get(`https://stacknfly.herokuapp.com/stacks/spotifyAPI/${spotifyQuery}`).then(songsFound => {
 
     spotifyResults.innerHTML = ""
 
