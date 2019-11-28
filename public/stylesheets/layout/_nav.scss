@@ -91,3 +91,15 @@ nav div{
 
   
 }
+
+.subnav-link{
+  // margin-top:3rem;
+  transition:0.3s ease-in;
+  text-decoration: none;
+
+}
+
+.subnav-link:hover{
+  transform:translateY(-1rem);
+  text-decoration:none;
+}

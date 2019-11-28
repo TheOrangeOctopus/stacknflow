@@ -10,8 +10,8 @@
   // max-width:1200px;
   width:$globalwidth;
   max-width:$maxwidth;
- 
 }
+
 .one-stack{
   /* height: 35rem; */
   // padding-bottom: 1rem;
@@ -26,6 +26,22 @@
   flex-direction: column;
   justify-content: space-between;
   transition:0.3s; 
+
+  h2:hover{
+    // padding-top: 0.3rem;
+    // padding-bottom:0.3rem;
+    transform:translateX(2rem);
+    transition:0.3s;
+  }
+  a{
+    text-decoration:none;
+    color:$primarycolor;
+    transition:0.2s;
+  }
+  a:hover{
+    text-decoration:underline;
+    transition:0.2s;
+  }
 }
 
 .one-stack:hover {

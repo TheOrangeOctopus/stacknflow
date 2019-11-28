@@ -1,40 +1,79 @@
 <div class="html-detail">
-<div class="header-detail">
-  
-  <img src="{{stack.image}}" class="image-detail" alt="Porqué no sale la imagen? :(">
-  <div class="shadow">
-  
-    <div class="info-detail">
-      <h1>{{stack.title}}</h1>
-      <h4>{{stack.timeInHours}}h // {{stack.category}} // by {{stack.createdBy}}</h4>
+  <div class="header-detail">
+
+    <img src="{{stack.image}}" class="image-detail" alt="Stack Image">
+    <div class="shadow">
+
+      <div class="info-detail">
+        <h1>{{stack.title}}</h1>
+        <h4>Time:{{stack.timeInHours}}h | Category: {{stack.category}} | <i class="fas fa-user"></i>{{stack.createdBy}}
+        </h4>
+      </div>
     </div>
   </div>
-</div>
-<div class="body-detail">
-  <div class="description-detail">
-    <p>{{stack.description}}</p>
-  </div>
-  <div class="steps-detail">
-    {{#each stack.steps}}
-    <div class="one-step">
-      <div class="step-number-detail">
-        <h3>{{order}}</h3>
-      </div>
-      <div class="step-desc-detail">
-        <h2>{{title}} </h2>
-        <p>{{instruction}}</p>
-      </div>
-      <div class="step-source-detail">
-        <div>{{resource.url}}</div>
-      </div>
-      <div class="time-step-detail">
+  <div class="body-detail">
+    <div class="description-detail">
+      <p>{{stack.description}}</p>
+    </div>
+    <div class="steps-detail">
+      {{!-- METER EACH STEP --}}
+      <div class="one-step">
+        <div class="step-number-detail">
+          <h3>{{!--{{order}}--}}1</h3>
+        </div>
+        <div class="step-desc-detail">
+          <h2>{{!--{{title}}--}}Esto es un video de YOUTUBE</h2>
+          <p>{{!--{{instruction}}--}}Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras placerat eu massa
+            condimentum euismod. Ut orci lectus, imperdiet eget molestie in, finibus nullam.</p>
+        </div>
+        <div class="step-source-detail">
+          {{!-- YOUTUBE IF         --}}
+          <div class="step-youtube">
+            <iframe src="https://www.youtube.com/embed/1pR5L1mrKCU" frameborder="0" class="youtube-embed"></iframe>
+          </div>
+  {{!-- SPOTIFY IF         --}}
+          <div class="step-spotify">
+
+            <iframe class="spotify-embed" src="https://open.spotify.com/embed/track/6cy3ki60hLwimwIje7tALf"
+              frameborder="0" allowtransparency="true" allow="encrypted-media">
+            </iframe>
+          </div>
+    {{!-- BOOK IF         --}}
+          <div class="step-googlebook">
+            <div class="google-img"><a href="ENLACE AL LIBRO"><img src="/images/book.png"
+                  alt="METE EL ENLACE AL LIBRO, BRO">
+              </a></div>
+            <div class="google-desc">
+              <div>
+                <h2 class="book-title">Titulo del Libro</h2>
+                <h3 class="book-author">Autor del libro</h3>
+              </div>
+              <a href="ENLACE AL LIBRO">Ver preview en google books</a>
+            </div>
+          </div>
+ {{!-- doc IF         --}}
+          <div class="step-doc">
+            <div class="doc-img"><a href="ENLACE AL DOC"><img src="/images/pdf.png"
+                  alt="METE EL ENLACE AL LIBRO, BRO">
+              </a></div>
+            <div class="doc-desc">
+              <div>
+                <h2 class="doc-title">Titulo del Archivo</h2>
+              </div>
+              <a href="ENLACE AL DOC">Descargar</a>
+            </div>
+
+          
+        </div>
+
+        {{!-- TIME TO INSERT ONE DAY <div class="time-step-detail">
         <p><div class="bar-detail"> </div>{{timeInMinutes}}m</p>
+      </div> --}}
       </div>
+      {{!-- {{/each}} --}}
     </div>
-    {{/each}}
+    <div class="last-div">
+      <h1>CONGRATULATIONS! YOU HAVE APROVECHADO THIS TIME YOUR WAY. KEEP MOVING! 🚀</h1>
+    </div>
   </div>
-  <div class="last-div">
-  <h1>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAND ITS DONE! 🚀</h1>
-  </div>
-</div>
 </div>

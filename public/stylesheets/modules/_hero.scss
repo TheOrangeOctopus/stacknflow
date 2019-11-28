@@ -1,0 +1,55 @@
+#wrapper-index{
+	display:flex;
+	justify-content: center;
+	align-items:center;
+	flex-direction: column;
+	height:100vh;
+	width:100vw;
+	background-color: $primarycolorSoft;
+
+	h1{
+		font-size:2rem;
+		line-height: 2.5rem;;
+	}
+
+	a{
+		font-size:1.8rem;
+		padding:2rem 4rem;
+		background-color: $primarycolor;
+		color:$primarycolorSoft;
+		margin:2rem 0;
+		text-decoration: none;
+		border:2px solid $primarycolor;
+	}
+
+	a:hover::before{
+		content:">> ";
+		transition:0.5s;
+	}
+	a:hover{
+		border:2px solid $primarycolor;
+		color:$primarycolor;
+		background-color:$primarycolorSoft;
+		transition:0.3s;
+		// padding:2rem rem 2rem 5rem;
+		
+	}
+}
+
+.logo-big{
+	display:flex;
+	flex-direction: column;
+	align-items:center;
+	justify-content: center;
+	fill:$primarycolor;
+	width:50%;
+	// transform: rotateX(60deg) rotateY(0deg) rotateZ(-45deg);
+}
+
+
+.logobig{
+	fill:$primarycolor;
+	width:100%;
+	
+}
+

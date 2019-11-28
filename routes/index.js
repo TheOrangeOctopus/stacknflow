@@ -6,7 +6,7 @@ const router  = express.Router();
 /* GET home page */
 router.get('/', (req, res, next) => {
   res.render('index', {
-    user: req.user });
+    user: req.user, layout:false });
 });
 
 router.get("/logout", (req, res) => {
