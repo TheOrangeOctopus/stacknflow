@@ -11,27 +11,27 @@ const bcryptSalt = 10;
 
 router.post("/login", passport.authenticate("local", {
   successRedirect: "/stacks/",
-  failureRedirect: "/stacks/",
+  failureRedirect: "/stacks",
   failureFlash: true,
   passReqToCallback: true
 }));
 
-router.post("stacks/login", passport.authenticate("local", {
+/* router.post("stacks/login", passport.authenticate("local", {
   successRedirect: "/stacks/",
   failureRedirect: "/stacks/",
   failureFlash: true,
   passReqToCallback: true
 }));
-
+ */
 
 
 router.get("/signup", (req, res, next) => {
   res.render("auth/signup");
 });
 
-router.get("stacks/signup", (req, res, next) => {
+/* router.get("stacks/signup", (req, res, next) => {
   res.render("auth/signup");
-});
+}); */
 
 router.post("/signup", (req, res, next) => {
   const username = req.body.username;
