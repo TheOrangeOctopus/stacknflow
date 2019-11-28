@@ -202,7 +202,7 @@
 
   <div class="one-stack">
     <div class="top-preview-display">
-      <h2>{{title}}</h2>
+      <a href="/stacks/{{_id}}"><h2>{{title}}</h2></a>
       {{#is category "learning"}}
       <svg class="category-logo" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 432.4 432.4"
@@ -384,7 +384,7 @@
       </div>
     </div>
     <div class="bottom-preview-display">
-      <div class="likes-preview-display"><i class="fas fa-heart"></i>
+      <div class="likes-preview-display"><a href="/stacks/like/{{_id }}"><i class="fas fa-heart"></i></a>
         <h5>{{likesCounter}}</h5>
       </div>
       <div class="autor"><i class="fas fa-user"></i>
@@ -394,4 +394,4 @@
   </div>
 
   {{/each}}
-  <div>
+ 

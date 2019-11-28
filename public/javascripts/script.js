@@ -294,7 +294,7 @@ function sendInfoToDB() {
         resource: "spotify",
         title: SPsrcTitle,
         instruction: SPsrcDesc,
-        order: idx,
+        order: idx+1,
         url: SPUri,
         songName: SPSongTitle,
         songArtist: SPSongArtist
@@ -310,7 +310,7 @@ function sendInfoToDB() {
         resource: "youtube",
         title: YBsrcTitle,
         instruction: YBsrcDesc,
-        order: idx,
+        order: idx+1,
         url: YBUrl
       }
       hasVideo = true
@@ -324,7 +324,7 @@ function sendInfoToDB() {
         resource: "link",
         title: LKsrcTitle,
         instruction: LKsrcDesc,
-        order: idx,
+        order: idx+1,
         url: LKUrl
       }
       hasLink = true
@@ -339,7 +339,7 @@ function sendInfoToDB() {
         resource: "doc",
         title: DCsrcTitle,
         instruction: DCsrcDesc,
-        order: idx,
+        order: idx+1,
         url: DCUrl,
         docName: DCName
       }
@@ -374,7 +374,7 @@ function sendInfoToDB() {
         resource: "none",
         title: NNsrcTitle,
         instruction: NNsrcDesc,
-        order: idx,
+        order: idx+1,
       }
       steps.push(step)
     }

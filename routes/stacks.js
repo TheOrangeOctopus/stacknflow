@@ -15,19 +15,18 @@ const bcrypt = require("bcrypt");
 
 
 
-
 router.get("/", (req, res, next) => {
-  console.log(req.user)
-  Stacks.find({status: "active"})
-  .sort({"likesCounter": -1})
+  
+  Stacks.find({ status: "active" })
+    .sort({ "likesCounter": -1 })
     .lean()
     .then(allStacks =>
       res.render("stacks/show", {
         stacks: allStacks,
-        user: req.user, 
+        user: req.user,
       })
     )
-    .catch(function() {
+    .catch(function () {
       res.redirect("/error")
     });
 });
@@ -44,40 +43,23 @@ router.post('/filtered', (req, res, next) => {
 
 
 router.get('/new', (req, res, next) => {
-  res.render('stacks/new', { 
-    user: req.user })
+  res.render('stacks/new', {
+    user: req.user
+  })
 })
 
 //revisar si popular , la subida de imagenes y los steps que populen las sources
 router.post('/new', (req, res, next) => {
-  Stacks.create(req.body).then(createdStack=> {
+  Stacks.create(req.body).then(createdStack => {
     res.json({ createdStack, timestamp: new Date() });
   });
 })
 
 
-
-
-
-
-
-/* router.get("/adminpanel", (req, res, next) => {
-  Stacks.find({})
-  .sort({"created_at": 1})
-    .lean()
-    .then(allStacks =>
-      res.render("adminpanel", { stacks: allStacks })
-    )
-    .catch(function() {
-      next();
-      throw new Error("There's an error.");
-    });
-}); */
-
 router.get("/:id/delete", (req, res, next) => {
   Stacks.findByIdAndDelete(req.params.id)
     .then(deletedStack => res.redirect("/stacks/adminpanel"))
-    .catch(function() {
+    .catch(function () {
       next();
       throw new Error("Hmmmmm.... problems!");
     });
@@ -86,10 +68,12 @@ router.get("/:id/delete", (req, res, next) => {
 router.get("/:id/edit", (req, res, next) => {
   Stacks.findById(req.params.id)
     .then(stackDetail =>
-      res.render("stacks/edit", { stack: stackDetail,
-        user: req.user })
+      res.render("stacks/edit", {
+        stack: stackDetail,
+        user: req.user
+      })
     )
-    .catch(function() {
+    .catch(function () {
       next();
       throw new Error("Algo no ha ido bien, willy!");
     });
@@ -97,7 +81,7 @@ router.get("/:id/edit", (req, res, next) => {
 
 router.post("/:id/edit", (req, res) => {
   Stacks.updateOne(
-    {_id: req.body._id},
+    { _id: req.body._id },
     {
       title: req.body.title,
       description: req.body.description,
@@ -107,19 +91,20 @@ router.post("/:id/edit", (req, res) => {
       user: req.user,
     }
   )
-      .then(updatedStack => {
-    res.redirect("/stacks/adminpanel");
-  })
-}); 
+    .then(updatedStack => {
+      res.redirect("/stacks/adminpanel");
+    })
+});
 
-router.get("/:id",  (req, res, next) => {
+router.get("/:id", (req, res, next) => {
   Stacks.findById(req.params.id)
     .then(stackDetail =>
-      res.render("stacks/detail", { 
+      res.render("stacks/detail", {
         stack: stackDetail,
-        user: req.user,  })
+        user: req.user,
+      })
     )
-    .catch(function() {
+    .catch(function () {
       next();
       throw new Error("Algo no ha ido bien, willy!");
     });
@@ -160,7 +145,7 @@ passport.use(
 passport.serializeUser((user, cb) => {
   console.log("serialize");
   console.log(`storing ${user._id} in the session`);
-   cb(null, {id: user._id, rol: user.rol});
+  cb(null, { id: user._id, rol: user.rol });
 });
 
 passport.deserializeUser((id, cb) => {
@@ -175,7 +160,7 @@ passport.deserializeUser((id, cb) => {
 });
 
 function checkRoles(roles) {
-  return function(req, res, next) {
+  return function (req, res, next) {
     if (req.isAuthenticated() && roles.includes(req.user.rol)) {
       return next();
     } else {
@@ -191,34 +176,33 @@ function checkRoles(roles) {
 const checkAdminOrMod = checkRoles(["admin", "mod"]);
 const checkAdmin = checkRoles(["admin"]);
 
-
 router.get("/adminpanel", (req, res, next) => {
   Stacks.find({})
-  .sort({"created_at": 1})
+    .sort({ "created_at": 1 })
     .lean()
     .then(allStacks =>
-      res.render("adminpanel", { 
+      res.render("adminpanel", {
         stacks: allStacks,
         user: req.user,
-        })
+      })
     )
-    .catch(function() {
+    .catch(function () {
       next();
       throw new Error("There's an error.");
     });
 });
 
 router.get("/adminpanel/pendingpanel", (req, res, next) => {
-  Stacks.find({status: "pending"})
-  .sort({"created_at": 1})
+  Stacks.find({ status: "pending" })
+    .sort({ "created_at": 1 })
     .lean()
     .then(allStacks =>
-      res.render("pendingpanel", { 
+      res.render("pendingpanel", {
         stacks: allStacks,
         user: req.user,
-        })
+      })
     )
-    .catch(function() {
+    .catch(function () {
       next();
       throw new Error("There's an error.");
     });
@@ -235,7 +219,7 @@ router.get("/logout", (req, res) => {
 router.get('/spotifyAPI/:query', (req, res, next) => {
   let items = [];
   console.log("Ha entrado en la ruta fuck the system: " + req.params.query)
-  spotifyApi.searchTracks(req.params.query,{ limit: 5})
+  spotifyApi.searchTracks(req.params.query, { limit: 5 })
     .then((songs) => {
       console.log(songs.body.tracks.items)
       songs.body.tracks.items.forEach((song) => {
@@ -262,14 +246,44 @@ router.get('/spotifyAPI/:query', (req, res, next) => {
 })
 
 router.post('/uploadPicture', uploadPictureCloud.single("image"), (req, res, next) => {
-  res.json(req.file)  
+  res.json(req.file)
 });
 
 router.post('/uploadDocument', uploadDocumentCloud.single("document"), (req, res, next) => {
-  res.json(req.file)  
+  res.json(req.file)
 });
 
 
+router.get("/confirm/:id", (req, res) => {
+  Stacks.updateOne(
+    { _id: req.params.id },
+    {
+      status: "active",
+    }
+  )
+    .then(updatedStack => {
+      res.redirect("/stacks/pendingpanel");
+    })
+});
+
+
+router.get("/like/:id", (req, res) => {
+  Stacks.updateOne(
+    { _id: req.params.id },
+    { $inc: { likesCounter: 1 } }
+  )
+    .then(updatedStack => {
+      User.updateOne(
+        { _id: req.user._id},
+        { $push: {stacksLiked: req.params.id} }
+      ).then((userUpdated) => {
+        res.redirect("/stacks/")
+      })
+    })
+});
+
+
+// Login Google
 
 
 
