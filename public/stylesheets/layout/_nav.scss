@@ -37,11 +37,34 @@ nav div{
     color:$primarycolor;
     background-color: $white;
   }
+  a:visited{
+    color:$primarycolor;
+  }
+  a:visited:hover{
+    color:$white;
+  }
 }
 
 .logo-wrapper{
+  top:2rem;
   padding:0;
-  margin-left:15rem;
+  transition:0.3s ease-out;
+ 
+}
+
+.logo-wrapper:hover{
+  cursor:pointer;
+  opacity: 0.6;
+  transition:0.3s;
+  transform: rotate3d(0,1,0,-20deg);
+  // transform: translateX(2rem);
+}
+
+.logo-wrapper:hover::after{
+  cursor:pointer;
+  opacity: 0.6;
+  transition:0.3s;
+ 
 }
 
 .mainlogo{
@@ -58,4 +81,13 @@ nav div{
   align-items: center;
   width: $globalwidth;
   max-width:$maxwidth;
+  div{
+    margin-left:0;
+    margin-right:0;
+  }
+  .login-buttons a:last-of-type{
+    margin-right:0;
+  }
+
+  
 }

@@ -17,6 +17,7 @@ let uploadStackPic = document.querySelector(".upload-image")
 let uploadDoc = document.querySelector(".upload-document")
 let uploadDocDomEl = document.querySelector(".file-source")
 let stepsContainer = document.querySelector("#stepsContainer")
+let logo = document.querySelector(".logo-wrapper")
 
 
 
@@ -24,7 +25,9 @@ let stepsContainer = document.querySelector("#stepsContainer")
 
 
 
-
+logo.addEventListener("click",function(){
+  window.location.href = "/stacks";
+})
 ///// VIVUS
 
 const myVivus = new Vivus('mainlogo', {
