@@ -1,0 +1,21 @@
+button{
+	background-color:transparent;
+	border:2px solid $primarycolor;
+	display:inline-block;
+	cursor:pointer;
+	color:$primarycolor;
+	font-size:1rem;
+	padding:1rem 2rem;
+    text-decoration:none;
+    margin:0.5rem;
+    transition:0.3s;
+}
+button:hover {
+    background-color:$primarycolor;
+    color:$white;
+    transition:0.3s;
+}
+button:active {
+	position:relative;
+	top:1px;
+}
