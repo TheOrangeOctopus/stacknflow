@@ -23,7 +23,10 @@
   border-radius:0;
 }
 
-
+.book-img{
+  width:100%;
+  object-fit: contain;
+}
 
 
 
@@ -219,13 +222,15 @@ h1{
   }
 }
 
-.spotify-result img{
+.spotify-result img,
+.book-result img{
   width:100%;
   object-fit: contain;
 }
 
 
-.spotify-results-list{
+.spotify-results-list,
+.books-results-list{
   list-style-type: none;
     width: 100%;
     display: flex;
@@ -279,7 +284,8 @@ h1{
   }
 }
 
-.spotify-result{
+.spotify-result,
+.books-result{
   display:flex;
   justify-content: space-between;
   width:100%;

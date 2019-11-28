@@ -436,6 +436,10 @@ button:active {
   outline: none;
   border-radius: 0; }
 
+.book-img {
+  width: 100%;
+  object-fit: contain; }
+
 h3 {
   font-size: 1.6em;
   margin: 0rem 0 1rem 0;
@@ -569,11 +573,13 @@ h1 {
     object-fit: contain;
     filter: saturate(0.3); }
 
-.spotify-result img {
+.spotify-result img,
+.book-result img {
   width: 100%;
   object-fit: contain; }
 
-.spotify-results-list {
+.spotify-results-list,
+.books-results-list {
   list-style-type: none;
   width: 100%;
   display: flex;
@@ -581,7 +587,8 @@ h1 {
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 1rem; }
-  .spotify-results-list li {
+  .spotify-results-list li,
+  .books-results-list li {
     display: flex;
     background-color: #ccc;
     padding: 0.5rem;
@@ -589,11 +596,13 @@ h1 {
     transition: 0.3s;
     width: 48%;
     flex-wrap: wrap; }
-    .spotify-results-list li img {
+    .spotify-results-list li img,
+    .books-results-list li img {
       width: 100%;
       height: 100%;
       object-fit: contain; }
-  .spotify-results-list li:hover {
+  .spotify-results-list li:hover,
+  .books-results-list li:hover {
     cursor: pointer;
     background-color: rgba(111, 117, 131, 0.5);
     transition: 0.3s; }
@@ -609,13 +618,16 @@ h1 {
   .new-stack-step div div:last-of-type {
     width: 70%; }
 
-.spotify-result {
+.spotify-result,
+.books-result {
   display: flex;
   justify-content: space-between;
   width: 100%; }
-  .spotify-result div:first-of-type {
+  .spotify-result div:first-of-type,
+  .books-result div:first-of-type {
     width: 20%; }
-  .spotify-result div:last-of-type {
+  .spotify-result div:last-of-type,
+  .books-result div:last-of-type {
     width: 75%; }
 
 #new-stack-image {

@@ -12,6 +12,7 @@ let stepDomEl = document.querySelector(".step-creation")
 let sourceTypeDomEl = document.querySelector(".source-type")
 let sourcesDomEl = document.querySelectorAll(".source")
 let spotifySearchDomEl = document.querySelector(".spotify-search")
+let bookSearchDomEl = document.querySelector(".book-search")
 let youtubeBtn = document.querySelector(".insert-youtube")
 let uploadStackPic = document.querySelector(".upload-image")
 let uploadDoc = document.querySelector(".upload-document")
@@ -205,7 +206,11 @@ function loadStepFromEditor() {
     container.appendChild(sourceContainerDomEl)
     newStepDomEl.classList.add("src-youtube")
   }
-  function bookSourceLoader(container) { }
+  function bookSourceLoader(container) { 
+    let sourceContainerDomEl = document.querySelector(".books-result")
+    container.appendChild(sourceContainerDomEl)
+    newStepDomEl.classList.add("src-book")
+  }
   function fileSourceLoader(container) {
     let sourceContainerDomEl = document.querySelector(".uploaded-document")
     container.appendChild(sourceContainerDomEl)
@@ -341,6 +346,25 @@ function sendInfoToDB() {
       hasPdf = true
       steps.push(step)
     }
+    ///// books
+    if (step.classList.value.includes("src-book")) {
+      let SPsrcTitle = document.querySelector(".src-book > .new-step-title").innerText
+      let SPsrcDesc = document.querySelector(".src-book > .new-step-description").innerText
+      let SPSongTitle = document.querySelector(".book-title").innerText
+      let SPSongArtist= document.querySelector(".book-author").innerText;
+      let SPUri = document.querySelector(".book-link").value
+      let step = {
+        resource: "book",
+        title: SPsrcTitle,
+        instruction: SPsrcDesc,
+        order: idx,
+        url: SPUri,
+        songName: SPSongTitle,
+        songArtist: SPSongArtist
+      }
+      hasBook = true
+      steps.push(step)
+    }
 
     if (step.classList.value.includes("src-none")) {
       let NNsrcTitle = document.querySelector(".src-none > .new-step-title").innerText
@@ -462,6 +486,11 @@ youtubeBtn.addEventListener("click", function (e) {
 })
 }
 
+bookSearchDomEl.addEventListener("click", function (e) {
+  e.preventDefault()
+  bookSearch()
+})
+
 if(saveStackBtn!== null){
 saveStackBtn.addEventListener("click", function (e) {
   e.preventDefault()
@@ -554,6 +583,71 @@ function youtubeLinkToEmbed() {
   sourceContainer.appendChild(youtubeContainer)
 }
 
+////////////////////GOOGLE BOOKS
+function bookSearch() {
+  let booksQuery = document.querySelector("#books-query").value
+  let booksResults = document.querySelector(".books-results-list")
+  booksQuery = booksQuery.split(" ").join("%20")
+  axios.get(`https://www.googleapis.com/books/v1/volumes/?q=${booksQuery}`).then(booksFound => {
 
+    booksResults.innerHTML = ""
+  console.log(booksFound)
+    booksFound.data.items.splice(0,4).forEach((book) => {
+      
+      let { volumeInfo } = book
+
+      let bookInfoDomel = document.createElement("li")
+      let sourceContainer = document.createElement("div")
+      let imgContainer = document.createElement("div")
+      let infoContainer = document.createElement("div")
+      let titleDomel = document.createElement("p")
+      let authorsDomel = document.createElement("p")
+      let imgDomel = document.createElement("img")
+      let instDomel = document.createElement("span")
+      let linkDomEl = document.createElement("input")
+
+      linkDomEl.setAttribute("type","hidden")
+      linkDomEl.setAttribute("class","book-link")
+      linkDomEl.setAttribute(`value`,`${volumeInfo.infoLink}`)
+      titleDomel.setAttribute("class","book-title")
+      authorsDomel.setAttribute("class","book-authors")
+      imgDomel.setAttribute("class", "book-img")
+      imgContainer.appendChild(imgDomel)
+      
+      infoContainer.appendChild(titleDomel)
+      infoContainer.appendChild(authorsDomel)
+      infoContainer.appendChild(instDomel)
+      infoContainer.appendChild(linkDomEl)
+
+      sourceContainer.appendChild(imgContainer)
+      sourceContainer.appendChild(infoContainer)
+      sourceContainer.setAttribute("class", "books-result")
+      titleDomel.innerHTML = volumeInfo.title
+      authorsDomel.innerHTML = volumeInfo.authors[0]
+      if (volumeInfo.imageLinks){
+      imgDomel.setAttribute(`src`, `${volumeInfo.imageLinks.thumbnail}`)
+      } else {
+        imgDomel.setAttribute(`src`, `https://islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg`)
+      }
+      instDomel.innerHTML = "Click to select this book"
+
+      bookInfoDomel.appendChild(sourceContainer)
+      booksResults.appendChild(bookInfoDomel)
+
+    })
+  }).then(() => {
+    let booksResultsList = document.querySelectorAll(".books-results-list > li")
+    booksResultsList.forEach((result) => {
+      result.addEventListener("click", function () {
+        result.classList.toggle("active")
+        let otherResults = document.querySelectorAll(".books-results-list >li:not(.active)")
+        otherResults.forEach((other) => {
+          other.remove()
+        })
+      })
+    })
+  })
+
+}
 
   
