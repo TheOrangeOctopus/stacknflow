@@ -16,64 +16,70 @@
       <p>{{stack.description}}</p>
     </div>
     <div class="steps-detail">
-      {{!-- METER EACH STEP --}}
+      {{#each stack.steps}}
       <div class="one-step">
         <div class="step-number-detail">
-          <h3>{{!--{{order}}--}}1</h3>
+          <h3>{{order}}</h3>
         </div>
         <div class="step-desc-detail">
-          <h2>{{!--{{title}}--}}Esto es un video de YOUTUBE</h2>
-          <p>{{!--{{instruction}}--}}Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras placerat eu massa
-            condimentum euismod. Ut orci lectus, imperdiet eget molestie in, finibus nullam.</p>
+          <h2>{{title}}</h2>
+          <p>{{instruction}}</p>
         </div>
         <div class="step-source-detail">
-          {{!-- YOUTUBE IF         --}}
+          {{#is hasVideo true}}
           <div class="step-youtube">
-            <iframe src="https://www.youtube.com/embed/1pR5L1mrKCU" frameborder="0" class="youtube-embed"></iframe>
+            <iframe src="{{url}}" frameborder="0" class="youtube-embed"></iframe>
           </div>
-  {{!-- SPOTIFY IF         --}}
+          {{/is}}
+          {{#is hasMusic true}}
           <div class="step-spotify">
 
-            <iframe class="spotify-embed" src="https://open.spotify.com/embed/track/6cy3ki60hLwimwIje7tALf"
-              frameborder="0" allowtransparency="true" allow="encrypted-media">
+            <iframe class="spotify-embed" src="{{url}}" frameborder="0" allowtransparency="true"
+              allow="encrypted-media">
             </iframe>
           </div>
-    {{!-- BOOK IF         --}}
+          {{/is}}
+          {{#is hasBook true}}
           <div class="step-googlebook">
-            <div class="google-img"><a href="ENLACE AL LIBRO"><img src="/images/book.png"
-                  alt="METE EL ENLACE AL LIBRO, BRO">
+            <div class="google-img"><a href="{{url}}"><img src="{{bookImage}}" alt="METE EL ENLACE AL LIBRO, BRO">
               </a></div>
             <div class="google-desc">
               <div>
-                <h2 class="book-title">Titulo del Libro</h2>
-                <h3 class="book-author">Autor del libro</h3>
+                <h2 class="book-title">{{bookName}}</h2>
+                <h3 class="book-author">{{bookAuthor}}</h3>
               </div>
-              <a href="ENLACE AL LIBRO">Ver preview en google books</a>
+              <a href="{{url}}">Ver preview en google books</a>
             </div>
           </div>
- {{!-- doc IF         --}}
+          {{/is}}
+          {{#is hasPdf true}}
           <div class="step-doc">
-            <div class="doc-img"><a href="ENLACE AL DOC"><img src="/images/pdf.png"
-                  alt="METE EL ENLACE AL LIBRO, BRO">
+            <div class="doc-img"><a href="{{url}}"><img src="/images/pdf.png" alt="METE EL ENLACE AL LIBRO, BRO">
               </a></div>
             <div class="doc-desc">
               <div>
-                <h2 class="doc-title">Titulo del Archivo</h2>
+                <h2 class="doc-title">{{docName}}</h2>
               </div>
-              <a href="ENLACE AL DOC">Descargar</a>
+              <a href="{{url}}">Descargar</a>
             </div>
-
-          
-        </div>
-
-        {{!-- TIME TO INSERT ONE DAY <div class="time-step-detail">
+          </div>
+          {{/is}}
+          {{#is hasLink true}}
+          <div class="google-desc">
+            <a href="{{url}}">{{url}}</a>
+          </div>
+          {{/is}}
+          {{!-- TIME TO INSERT ONE DAY <div class="time-step-detail">
         <p><div class="bar-detail"> </div>{{timeInMinutes}}m</p>
       </div> --}}
+        </div>
+        
       </div>
-      {{!-- {{/each}} --}}
+    
+    {{/each}}
     </div>
-    <div class="last-div">
-      <h1>CONGRATULATIONS! YOU HAVE APROVECHADO THIS TIME YOUR WAY. KEEP MOVING! 🚀</h1>
-    </div>
+      <div class="last-div">
+        <h1>CONGRATULATIONS! YOU HAVE APROVECHADO THIS TIME YOUR WAY. KEEP MOVING! 🚀</h1>
+      </div>
   </div>
 </div>
