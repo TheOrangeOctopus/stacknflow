@@ -68,7 +68,7 @@ swag.registerHelpers(hbs);
 
 
 // default value for title local
-app.locals.title = 'Stack n FLy';
+app.locals.title = 'Stack n Flow';
 
 
 // Enable authentication using session + passport
