@@ -500,7 +500,7 @@ button:active {
   height: 40rem;
   border: 2px solid #145B82;
   box-shadow: 10px 10px 0px 2px #EBF4E7;
-  margin-top: 3rem;
+  margin-top: 5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

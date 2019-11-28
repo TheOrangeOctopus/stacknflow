@@ -1,7 +1,7 @@
 // Selectors
 
-let closeLoginDisplay = document.querySelector(".close-login")
-let loginDisplay = document.querySelector(".login-button")
+let closeloginDisplayDomEl = document.querySelector(".close-login")
+let loginDisplayDomEl = document.querySelector(".login-button")
 let loginDomEl = document.querySelector(".login-box")
 let addInfoBtn = document.querySelector(".btn-stackInfo")
 let addStepBtn = document.querySelector(".btn-addStep")
@@ -56,8 +56,7 @@ function createHiddenInput(classOfParentDomEl,value,id){
 }
 
 function uploadPicture(inputID, destinationDomEl) {
-  // Upload an image via axios and render instantly inside the destination DOM element.
-  console.log("ha entrado")
+ 
   let uploadedImgDomEl = document.createElement("div")
   let img = document.createElement("img")
   let imgContainer = document.querySelector(`${destinationDomEl}`)
@@ -289,13 +288,13 @@ function sendInfoToDB() {
       let SPsrcDesc = document.querySelector(".src-spotify > .new-step-description").innerText
       let SPSongTitle = document.querySelector(".spotify-title").innerText
       let SPSongArtist= document.querySelector(".spotify-artist").innerText;
-      let SPUri = document.querySelector(".spotify-uri").value
+      let SPuri = document.querySelector(".spotify-uri").value
       let step = {
         resource: "spotify",
         title: SPsrcTitle,
         instruction: SPsrcDesc,
         order: idx+1,
-        url: SPUri,
+        url: SPuri,
         songName: SPSongTitle,
         songArtist: SPSongArtist
       }
@@ -352,13 +351,13 @@ function sendInfoToDB() {
       let SPsrcDesc = document.querySelector(".src-book > .new-step-description").innerText
       let SPSongTitle = document.querySelector(".book-title").innerText
       let SPSongArtist= document.querySelector(".book-author").innerText;
-      let SPUri = document.querySelector(".book-link").value
+      let SPuri = document.querySelector(".book-link").value
       let step = {
         resource: "book",
         title: SPsrcTitle,
         instruction: SPsrcDesc,
         order: idx,
-        url: SPUri,
+        url: SPuri,
         songName: SPSongTitle,
         songArtist: SPSongArtist
       }
@@ -401,104 +400,83 @@ function sendInfoToDB() {
 
   axios.post('/stacks/new', body)
     .then(response => {
-      console.log('post successful and the response is: ', response.data);
+      ;
     })
 }
 
 //Login Display Toggle
-if(loginDisplay !== null){
-  loginDisplay.addEventListener("click", function (e) {
+if(loginDisplayDomEl !== null){
+  loginDisplayDomEl.addEventListener("click", function (e) {
     e.preventDefault()
     fadeInDOMEl(loginDomEl, "hidden", 150)
   })
-}
-
-if(closeLoginDisplay !== null){
-  closeLoginDisplay.addEventListener("click", function (e) {
+  closeloginDisplayDomEl.addEventListener("click", function (e) {
     e.preventDefault()
     fadeOutDOMEl(loginDomEl, "hidden", 150)
   })
 }
 
+//New Stack Handlers
 if(uploadStackPic !== null){
+  new Sortable(stepsContainer, {
+    animation: 150,
+    ghostClass: 'ghost'
+  });
+
   uploadStackPic.addEventListener("click", function (e) {
     e.preventDefault()
     uploadPicture("#stack-image", ".img-container")
   })
-}
 
-//New Stack Handlers
-
-if(uploadDoc!== null){
-uploadDoc.addEventListener("click", function (e) {
-  e.preventDefault()
-  uploadDocument("#selected-doc", ".file-source")
-})
-}
-
-if(addInfoBtn !== null){
-addInfoBtn.addEventListener("click", function (e) {
-  e.preventDefault()
-  toggleClass2DOMEl(mainInfoDomEl, stepDomEl, "hidden", 300)
-  loadInfoFromEditor()
-  new Sortable(stepsContainer, {
-  animation: 150,
-  ghostClass: 'ghost'
-});
-})
-}
-
-if(addStepBtn!== null){
-addStepBtn.addEventListener("click", function (e) {
-  e.preventDefault()
-  loadStepFromEditor()
-})
-}
-
-if(editStackInfoBtn !== null){
-editStackInfoBtn.addEventListener("click", function (e) {
-  e.preventDefault()
-  toggleClass2DOMEl(stepDomEl, mainInfoDomEl, "hidden", 300)
-})
-}
-
-if(sourceTypeDomEl!== null){
-sourceTypeDomEl.addEventListener("change", function (e) {
-  e.preventDefault()
-  sourcesDomEl.forEach((e) => {
-    e.classList.add("hidden")
+  uploadDoc.addEventListener("click", function (e) {
+    e.preventDefault()
+    uploadDocument("#selected-doc", ".file-source")
   })
-  document.querySelector(`.${sourceTypeDomEl.value}`).classList.toggle("hidden")
-})
+
+  addInfoBtn.addEventListener("click", function (e) {
+    e.preventDefault()
+    toggleClass2DOMEl(mainInfoDomEl, stepDomEl, "hidden", 300)
+    loadInfoFromEditor()
+  })
+
+  addStepBtn.addEventListener("click", function (e) {
+    e.preventDefault()
+    loadStepFromEditor()
+  })
+
+  editStackInfoBtn.addEventListener("click", function (e) {
+    e.preventDefault()
+    toggleClass2DOMEl(stepDomEl, mainInfoDomEl, "hidden", 300)
+  })
+
+  sourceTypeDomEl.addEventListener("change", function (e) {
+    e.preventDefault()
+    sourcesDomEl.forEach((e) => {
+      e.classList.add("hidden")
+    })
+    document.querySelector(`.${sourceTypeDomEl.value}`).classList.toggle("hidden")
+  })
+
+  spotifySearchDomEl.addEventListener("click", function (e) {
+    e.preventDefault()
+    spotifySearch()
+  })
+
+  youtubeBtn.addEventListener("click", function (e) {
+    e.preventDefault()
+    youtubeLinkToEmbed()
+  })
+
+  bookSearchDomEl.addEventListener("click", function (e) {
+    e.preventDefault()
+    bookSearch()
+  })
+
+  saveStackBtn.addEventListener("click", function (e) {
+    e.preventDefault()
+    sendInfoToDB()
+  })
 }
-
-//if(spotifySearchDomEl !== null){
-spotifySearchDomEl.addEventListener("click", function (e) {
-  e.preventDefault()
-  spotifySearch()
-})
-//}
-
-if(youtubeBtn !== null){
-youtubeBtn.addEventListener("click", function (e) {
-  e.preventDefault()
-  youtubeLinkToEmbed()
-})
-}
-
-bookSearchDomEl.addEventListener("click", function (e) {
-  e.preventDefault()
-  bookSearch()
-})
-
-if(saveStackBtn!== null){
-saveStackBtn.addEventListener("click", function (e) {
-  e.preventDefault()
-  sendInfoToDB()
-})
-}
-
-
 
 ////////////AXIOS & OTHER REQUESTS//////////
 
@@ -512,7 +490,7 @@ function spotifySearch() {
     songsFound.data.forEach((song) => {
       let { artist } = song
       let { img } = song
-      let { uri } = song
+      let uri = song.id
 
       let songInfoDomel = document.createElement("li")
       let sourceContainer = document.createElement("div")
@@ -591,7 +569,7 @@ function bookSearch() {
   axios.get(`https://www.googleapis.com/books/v1/volumes/?q=${booksQuery}`).then(booksFound => {
 
     booksResults.innerHTML = ""
-  console.log(booksFound)
+ 
     booksFound.data.items.splice(0,4).forEach((book) => {
       
       let { volumeInfo } = book
@@ -610,7 +588,7 @@ function bookSearch() {
       linkDomEl.setAttribute("class","book-link")
       linkDomEl.setAttribute(`value`,`${volumeInfo.infoLink}`)
       titleDomel.setAttribute("class","book-title")
-      authorsDomel.setAttribute("class","book-authors")
+      authorsDomel.setAttribute("class","book-author")
       imgDomel.setAttribute("class", "book-img")
       imgContainer.appendChild(imgDomel)
       
