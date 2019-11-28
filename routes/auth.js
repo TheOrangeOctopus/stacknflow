@@ -11,7 +11,7 @@ const bcryptSalt = 10;
 
 router.post("/login", passport.authenticate("local", {
   successRedirect: "/stacks/",
-  failureRedirect: "/stacks",
+  failureRedirect: "/auth/signup",
   failureFlash: true,
   passReqToCallback: true
 }));
