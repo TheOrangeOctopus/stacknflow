@@ -79,7 +79,7 @@ router.get(
 );
 
 router.get(
-  "stacks/google",
+  "/auth/google",
   passport.authenticate("google", {
     scope: [
       "https://www.googleapis.com/auth/userinfo.profile",
