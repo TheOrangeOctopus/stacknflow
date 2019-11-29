@@ -5,6 +5,7 @@
 		"style.scss",
 		"abstract/_variables.scss",
 		"base/_reset.scss",
+		"pages/_stackdetail.scss",
 		"layout/_auth.scss",
 		"base/_typography.scss",
 		"layout/_nav.scss",
@@ -14,7 +15,6 @@
 		"modules/_filter.scss",
 		"pages/_home.scss",
 		"pages/_newstack.scss",
-		"pages/_stackdetail.scss",
 		"modules/_hero.scss"
 	],
 	"names": [],
