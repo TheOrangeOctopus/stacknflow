@@ -206,3 +206,24 @@
   } */
   }
 }
+
+
+.le-fix h2{
+  padding:1rem 2rem;
+  background-color: $primarycolor;
+  border: 2px solid $primarycolor;
+  transition: 0.3s;
+  color:$white;
+  border-radius:2rem;
+  margin-right:2rem;
+}
+
+
+.le-fix h2:hover{
+  padding:1rem 2rem;
+  color:$primarycolor;
+  background-color: $white;
+  border: 2px solid $primarycolor;
+  transition: 0.3s;
+  cursor:pointer;
+}

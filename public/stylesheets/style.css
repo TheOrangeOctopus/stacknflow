@@ -675,6 +675,23 @@ button:active {
           margin: 0;
           padding: 0; }
 
+.le-fix h2 {
+  padding: 1rem 2rem;
+  background-color: #145B82;
+  border: 2px solid #145B82;
+  transition: 0.3s;
+  color: #ffffff;
+  border-radius: 2rem;
+  margin-right: 2rem; }
+
+.le-fix h2:hover {
+  padding: 1rem 2rem;
+  color: #145B82;
+  background-color: #ffffff;
+  border: 2px solid #145B82;
+  transition: 0.3s;
+  cursor: pointer; }
+
 .all-stacks {
   display: flex;
   flex-wrap: wrap;
@@ -906,7 +923,9 @@ h1 {
   background-color: #ffffff; }
   .creation input {
     margin-top: 0rem;
-    padding: 0.75rem; }
+    padding: 0.75rem;
+    background-color: #EBF4E7;
+    color: #145B82; }
   .creation .stack-mainInfo {
     background-color: #ffffff;
     width: 100%;
@@ -1116,6 +1135,18 @@ h1 {
     color: #145B82; }
   .success-page a:visited:hover {
     color: #ffffff; }
+
+.edit-stack-u {
+  margin-top: 3rem; }
+  .edit-stack-u h2 {
+    background-color: #ffffff;
+    color: #145B82;
+    padding: 2rem 4rem; }
+
+.edit-stack-u input {
+  padding: 1.5rem 3rem;
+  margin: 2rem;
+  background-color: #EBF4E7; }
 
 #wrapper-index {
   display: flex;
