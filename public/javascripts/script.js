@@ -27,13 +27,13 @@ if (leFilter !== null) {
   stacksFilter()
 }
 
-function setloadingState(DOMEl,boolean){
+function setloadingState(DOMEl, boolean) {
   let imgLoading = document.createElement("img")
-  if(boolean){
-    imgLoading.setAttribute("class","loading")
-    imgLoading.setAttribute("src","/images/loading.gif")
+  if (boolean) {
+    imgLoading.setAttribute("class", "loading")
+    imgLoading.setAttribute("src", "/images/loading.gif")
     DOMEl.appendChild(imgLoading)
-  }else{
+  } else {
     imgLoading.remove()
   }
 }
@@ -62,150 +62,164 @@ function setloadingState(DOMEl,boolean){
 
 
 function stacksFilter() {
+  function filterStacks(timeFilterStatusParam, catFilterStatusParam, srcQueryStatusParam) {
+    // 
+    let timeFilter = timeFilterStatusParam.join(",")
+    let catFilter = catFilterStatusParam.join(",")
+    let srcFilter = srcQueryStatusParam.join(",")
+    let theQuery = ""
+
+    timeFilter !== "" && (theQuery += '&time=' + timeFilter)
+    catFilter !== "" && (theQuery += '&cat=' + catFilter)
+    srcFilter !== "" && (theQuery += '&src=' + srcFilter)
+
+    theQuery = theQuery.replace("&", "")
+
+    console.log("EL MADARFAKING FILTER :" + theQuery)
+    
+    location.href = `/stacks/lefilter/?${theQuery}`
+  }
+
   let timeFilterDOMEl = document.querySelectorAll(".filter-sw")
   let categoryFilterDOMEl = document.querySelectorAll(".filter-cat")
   let sourceFilterDOMEl = document.querySelectorAll(".filter-src")
 
-  let query = "";
+  let timeFilterStatus = []
+  let catFilterStatus = []
+  let srcFilterStatus = []
 
-  function filterStacks(query) {
-    // axios.get(`/stacks/lefilter/${query}`)
-    //   .then(filteredStacks => {
-    //     res.render("show", filteredStacks.data)
-    //   })
+
+  document.querySelector(".le-fix h2").onclick = function () {
+    filterStacks(timeFilterStatus, catFilterStatus, srcFilterStatus)
   }
+
 
   timeFilterDOMEl.forEach((filter) => {
     filter.addEventListener("click", function (e) {
       e.preventDefault()
-      if (filter.classList.contains("active")) {
-        filter.classList.toggle("active")
+      const isActive = filter.classList.contains("active")
+      filter.classList.toggle("active")
+
+      if (!isActive) {
         if (filter.classList.contains("1h")) {
-          // query +="/1"
-          filterStacks(query)
+          timeFilterStatus.push("1")
         }
         if (filter.classList.contains("2h")) {
-          // query +="/2"
-          filterStacks(query)
+          timeFilterStatus.push("2")
         }
         if (filter.classList.contains("4h")) {
-          // query +="/4"
-          filterStacks(query)
+          timeFilterStatus.push("4")
         }
-
       } else {
-        filter.classList.toggle("active")
+        
         if (filter.classList.contains("1h")) {
-          // query +="/1"
-          filterStacks(query)
+          timeFilterStatus.splice(timeFilterStatus.indexOf(1),1)
         }
         if (filter.classList.contains("2h")) {
-          // query +="/2"
-          filterStacks(query)
+          timeFilterStatus.splice(timeFilterStatus.indexOf(2),1)
+          
         }
         if (filter.classList.contains("4h")) {
-          // query +="/4"
-          filterStacks(query)
+          timeFilterStatus.splice(timeFilterStatus.indexOf(4),1)
         }
-
       }
+
+      
     })
   })
 
 
   categoryFilterDOMEl.forEach((filter) => {
     filter.addEventListener("click", function (e) {
-    if(filter.classList.contains("active")){
+      e.preventDefault()
+      const isActive = filter.classList.contains("active")
       filter.classList.toggle("active")
-        if(filter.classList.contains("")){
-          //query +=
-          filterStacks(query)
+
+      if (!isActive) {
+        // 
+        if (filter.classList.contains("culture")) {
+          catFilterStatus.push("culture")
         }
-        if(filter.classList.contains("")){
-          //query +=
-          filterStacks(query)
+        if (filter.classList.contains("sport")) {
+          catFilterStatus.push("sport")
         }
-        if(filter.classList.contains("")){
-          //query +=
-          filterStacks(query)
+        if (filter.classList.contains("learning")) {
+          catFilterStatus.push("learning")
         }
-        if(filter.classList.contains("")){
-          //query +=
-          filterStacks(query)
+        if (filter.classList.contains("spare")) {
+          catFilterStatus.push("spare")
         }
-      }else{
-        filter.classList.toggle("active")
-        if(filter.classList.contains("")){
-          //query +=
-          filterStacks(query)
+      } else {
+        
+        if (filter.classList.contains("culture")) {
+          catFilterStatus.splice(catFilterStatus.indexOf("culture"),1)
         }
-        if(filter.classList.contains("")){
-          //query +=
-          filterStacks(query)
+        if (filter.classList.contains("sport")) {
+          catFilterStatus.splice(catFilterStatus.indexOf("sport"),1)
+          
         }
-        if(filter.classList.contains("")){
-          //query +=
-          filterStacks(query)
+        if (filter.classList.contains("learning")) {
+          catFilterStatus.splice(catFilterStatus.indexOf("learning"),1)
         }
-        if(filter.classList.contains("")){
-          //query +=
-          filterStacks(query)
+        if (filter.classList.contains("spare")) {
+          catFilterStatus.splice(catFilterStatus.indexOf("spare"),1)
+        }
       }
-    }
   })
 })
 
-  sourceFilterDOMEl.forEach((filter)=>{
+
+  sourceFilterDOMEl.forEach((filter) => {
     filter.addEventListener("click", function (e) {
-      if(filter.classList.contains("active")){
-        filter.classList.toggle("active")
-          if(filter.classList.contains("spotify")){
-            //query +=
-            filterStacks(query)
-          }
-          if(filter.classList.contains("youtube")){
-            //query +=
-            filterStacks(query)
-          }
-          if(filter.classList.contains("book")){
-            //query +=
-            filterStacks(query)
-          }
-          if(filter.classList.contains("link")){
-            //query +=
-            filterStacks(query)
-          }
-          if(filter.classList.contains("file")){
-            //query +=
-            filterStacks(query)
-          }
-        }else{
-          filter.classList.toggle("active")
-          if(filter.classList.contains("spotify")){
-            //query +=
-            filterStacks(query)
-          }
-          if(filter.classList.contains("youtube")){
-            //query +=
-            filterStacks(query)
-          }
-          if(filter.classList.contains("book")){
-            //query +=
-            filterStacks(query)
-          }
-          if(filter.classList.contains("link")){
-            //query +=
-            filterStacks(query)
+      e.preventDefault()
+      const isActive = filter.classList.contains("active")
+      filter.classList.toggle("active")
+
+      if (!isActive) {
+        // 
+        if (filter.classList.contains("spotify")) {
+          srcFilterStatus.push("spotify")
         }
-          if(filter.classList.contains("file")){
-            //query +=
-            filterStacks(query)
+        if (filter.classList.contains("youtube")) {
+          srcFilterStatus.push("youtube")
+        }
+        if (filter.classList.contains("book")) {
+          srcFilterStatus.push("book")
+        }
+        if (filter.classList.contains("link")) {
+          srcFilterStatus.push("link")
+        }
+        if (filter.classList.contains("media")) {
+          srcFilterStatus.push("media")
+        }
+      } else {
+        
+        if (filter.classList.contains("spotify")) {
+          srcFilterStatus.splice(srcFilterStatus.indexOf("spotify"),1)
+        }
+        if (filter.classList.contains("youtube")) {
+          srcFilterStatus.splice(srcFilterStatus.indexOf("youtube"),1)
+          
+        }
+        if (filter.classList.contains("book")) {
+          srcFilterStatus.splice(srcFilterStatus.indexOf("book"),1)
+        }
+        if (filter.classList.contains("link")) {
+          srcFilterStatus.splice(srcFilterStatus.indexOf("link"),1)
+        }
+        if (filter.classList.contains("media")) {
+          srcFilterStatus.splice(srcFilterStatus.indexOf("media"),1)
         }
       }
+
+     
+      console.log(srcFilterStatus)
+     filterStacks(timeFilterStatus, catFilterStatus, srcFilterStatus)
     })
+
+
+
   })
-
-
 }
 
 
@@ -245,12 +259,12 @@ function createHiddenInput(classOfParentDomEl, value, id) {
 
 function uploadPicture(inputID, destinationDomEl) {
   // loadingIcon.classList.toggle("hidden")
-  
+
   let uploadedImgDomEl = document.createElement("div")
   let img = document.createElement("img")
   let imgContainer = document.querySelector(`${destinationDomEl}`)
   let hiddenUrl = document.createElement("input")
-  setloadingState(imgContainer,true)
+  setloadingState(imgContainer, true)
   hiddenUrl.setAttribute("class", "img-source")
   hiddenUrl.setAttribute("type", "hidden")
 
@@ -269,9 +283,9 @@ function uploadPicture(inputID, destinationDomEl) {
     img.setAttribute(`src`, `${imageUploaded.data.url}`)
     imgContainer.appendChild(uploadedImgDomEl)
     // loadingIcon.classList.toggle("hidden")
-    setloadingState(imgContainer,false)
+    setloadingState(imgContainer, false)
   })
-  
+
 }
 
 function uploadDocument(inputID, destinationDomEl) {
@@ -281,7 +295,7 @@ function uploadDocument(inputID, destinationDomEl) {
   let docContainer = document.querySelector(`${destinationDomEl}`)
   let hiddenUrl = document.createElement("input")
   let docName = document.createElement("p")
-  setloadingState(docContainer,true)
+  setloadingState(docContainer, true)
   hiddenUrl.setAttribute("class", "doc-source")
   hiddenUrl.setAttribute("type", "hidden")
   uploadedDocDomEl.setAttribute("class", "uploaded-document")
@@ -294,7 +308,7 @@ function uploadDocument(inputID, destinationDomEl) {
       'Content-Type': 'multipart/form-data'
     }
   }).then((documentUploaded) => {
-    setloadingState(docContainer,false)
+    setloadingState(docContainer, false)
     docContainer.innerHTML = ""
     hiddenUrl.value = documentUploaded.data.url
     docName.innerHTML = documentUploaded.data.originalname
@@ -594,7 +608,7 @@ function sendInfoToDB() {
 
   axios.post('/stacks/new', body)
     .then(response => {
-  
+
     })
 }
 
@@ -678,7 +692,7 @@ if (uploadStackPic !== null) {
 function spotifySearch() {
   let spotifyQuery = document.querySelector("#spotify-query").value
   let spotifyResults = document.querySelector(".spotify-results-list")
-  setloadingState(spotifyResults,true)
+  setloadingState(spotifyResults, true)
   axios.get(`https://stacknfly.herokuapp.com/stacks/spotifyAPI/${spotifyQuery}`).then(songsFound => {
 
     spotifyResults.innerHTML = ""
@@ -723,7 +737,7 @@ function spotifySearch() {
 
     })
   }).then(() => {
-    setloadingState(spotifyResults,false)
+    setloadingState(spotifyResults, false)
     let spotifyResultsList = document.querySelectorAll(".spotify-results-list > li")
     spotifyResultsList.forEach((result) => {
       result.addEventListener("click", function () {
@@ -762,7 +776,7 @@ function youtubeLinkToEmbed() {
 function bookSearch() {
   let booksQuery = document.querySelector("#books-query").value
   let booksResults = document.querySelector(".books-results-list")
-  setloadingState(booksResults,true)
+  setloadingState(booksResults, true)
   booksQuery = booksQuery.split(" ").join("%20")
   axios.get(`https://www.googleapis.com/books/v1/volumes/?q=${booksQuery}`).then(booksFound => {
 
@@ -817,7 +831,7 @@ function bookSearch() {
 
     })
   }).then(() => {
-    setloadingState(booksResults,false)
+    setloadingState(booksResults, false)
     let booksResultsList = document.querySelectorAll(".books-results-list > li")
     booksResultsList.forEach((result) => {
       result.addEventListener("click", function () {
