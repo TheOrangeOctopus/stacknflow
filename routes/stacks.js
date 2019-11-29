@@ -1,33 +1,31 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Stacks = require('../models/Stack');
+const Stacks = require("../models/Stack");
 const spotifyApi = require("../configs/spotifyApi");
-const booksApi = require('google-books-search');
-const uploadPictureCloud = require('../configs/cloudinaryImg');
-const uploadDocumentCloud = require('../configs/cloudinaryDoc');
+const booksApi = require("google-books-search");
+const uploadPictureCloud = require("../configs/cloudinaryImg");
+const uploadDocumentCloud = require("../configs/cloudinaryDoc");
 
 const LocalStrategy = require("passport-local").Strategy;
 const ensureLogin = require("connect-ensure-login");
-const passport = require('passport');
-const User = require("../models/User");
+const passport = require("passport");
+const User = require("../models/User"); "Stack"
 const bcrypt = require("bcrypt");
 
-
-
-
 router.get("/", (req, res, next) => {
-
   Stacks.find({ status: "active" })
-    .sort({ "likesCounter": -1 })
+    .sort({ likesCounter: -1 })
     .lean()
     .then(allStacks =>
       res.render("stacks/show", {
         stacks: allStacks,
-        user: req.user,
+        user: req.user
       })
     )
-    .catch(function () {
-      res.redirect("/error")
+    .catch(function() {
+      res.redirect("/error", {
+        user: req.user
+      });
     });
 });
 
@@ -73,51 +71,50 @@ router.get("/lefilter/?", (req, res, next) => {
 
 })
 router.get("/created", (req, res, next) => {
-  res.render
-})
+  res.render;
+});
 //Valorar meter un project para quedarnos con lo que nos interesa del objeto
 //y ver si hay que popular.
-router.post('/filtered', (req, res, next) => {
-  Stacks.filter({ category: req.body.category }, { timeInHours: req.body.time }, { tags: { $contains: req.body.tags } })
-    .then((stacksFound) => {
-      res.render('stacks/filtered', stacksFound);
-    })
+router.post("/filtered", (req, res, next) => {
+  Stacks.filter(
+    { category: req.body.category },
+    { timeInHours: req.body.time },
+    { tags: { $contains: req.body.tags } }
+  ).then(stacksFound => {
+    res.render("stacks/filtered", stacksFound);
+  });
 });
 
-
-router.get('/new', (req, res, next) => {
-  res.render('stacks/new', {
+router.get("/new", (req, res, next) => {
+  res.render("stacks/new", {
     user: req.user
-  })
-})
+  });
+});
 
 //revisar si popular , la subida de imagenes y los steps que populen las sources
-router.post('/new', (req, res, next) => {
-  Stacks.create(req.body)
-    .then(createdStack => {
+router.post("/new", (req, res, next) => {
+  Stacks.create(req.body).then(createdStack => {
+    Stacks.updateOne(
+      { _id: createdStack._id },
+      {
+        createdBy: req.user.username
+      }
+    )
+    .then(updatedStack => {
+      res.json({ updatedStack, timestamp: new Date() });
+    });
+    // Stacks.updateOne({ id: createdStack._id }, { createdBy: req.user.username })
+    //   .then((stack) => {
+    //     res.json({ stack, timestamp: new Date() })
 
-      Stacks.updateOne({ _id: createdStack._id },
-        {
-          createdBy: req.user.username
-        })
-
-        .then(updatedStack => {
-
-          res.json({ updatedStack, timestamp: new Date() })
-        })
-      // Stacks.updateOne({ id: createdStack._id }, { createdBy: req.user.username })
-      //   .then((stack) => {
-      //     res.json({ stack, timestamp: new Date() })
-
-      //   });
-    })
-})
-
+    //   });
+  });
+});
 
 router.get("/:id/delete", (req, res, next) => {
   Stacks.findByIdAndDelete(req.params.id)
     .then(deletedStack => res.redirect("/stacks/adminpanel"))
-    .catch(function () {
+    .catch(function() {
       next();
       throw new Error("Hmmmmm.... problems!");
     });
@@ -131,7 +128,7 @@ router.get("/:id/edit", (req, res, next) => {
         user: req.user
       })
     )
-    .catch(function () {
+    .catch(function() {
       next();
       throw new Error("Algo no ha ido bien, willy!");
     });
@@ -146,12 +143,11 @@ router.post("/:id/edit", (req, res) => {
       category: req.body.category,
       timeInHours: req.body.timeInHours,
       status: req.body.status,
-      user: req.user,
+      user: req.user
     }
-  )
-    .then(updatedStack => {
-      res.redirect("/stacks/adminpanel");
-    })
+  ).then(updatedStack => {
+    res.redirect("/stacks/adminpanel");
+  });
 });
 
 router.get("/:id", (req, res, next) => {
@@ -159,10 +155,10 @@ router.get("/:id", (req, res, next) => {
     .then(stackDetail =>
       res.render("stacks/detail", {
         stack: stackDetail,
-        user: req.user,
+        user: req.user
       })
     )
-    .catch(function () {
+    .catch(function() {
       next();
       throw new Error("Algo no ha ido bien, willy!");
     });
@@ -201,12 +197,10 @@ passport.use(
 );
 
 passport.serializeUser((user, cb) => {
-
   cb(null, { id: user._id, rol: user.rol });
 });
 
 passport.deserializeUser((id, cb) => {
-
   User.findById(id, (err, user) => {
     if (err) {
       return cb(err);
@@ -216,7 +210,7 @@ passport.deserializeUser((id, cb) => {
 });
 
 function checkRoles(roles) {
-  return function (req, res, next) {
+  return function(req, res, next) {
     if (req.isAuthenticated() && roles.includes(req.user.rol)) {
       return next();
     } else {
@@ -234,15 +228,15 @@ const checkAdmin = checkRoles(["admin"]);
 
 router.get("/adminpanel", (req, res, next) => {
   Stacks.find({})
-    .sort({ "created_at": 1 })
+    .sort({ created_at: 1 })
     .lean()
     .then(allStacks =>
       res.render("adminpanel", {
         stacks: allStacks,
-        user: req.user,
+        user: req.user
       })
     )
-    .catch(function () {
+    .catch(function() {
       next();
       throw new Error("There's an error.");
     });
@@ -250,22 +244,22 @@ router.get("/adminpanel", (req, res, next) => {
 
 router.get("/adminpanel/pendingpanel", (req, res, next) => {
   Stacks.find({ status: "pending" })
-    .sort({ "created_at": 1 })
+    .sort({ created_at: 1 })
     .lean()
     .then(allStacks =>
       res.render("pendingpanel", {
         stacks: allStacks,
-        user: req.user,
+        user: req.user
       })
     )
-    .catch(function () {
+    .catch(function() {
       next();
       throw new Error("There's an error.");
     });
 });
 
-router.get('/success', (req, res, next) => {
-  res.render('stacks/success', {
+router.get("/success", (req, res, next) => {
+  res.render("stacks/success", {
     user: req.user
   });
 });
@@ -275,92 +269,90 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-
 /////////////////////////////////////////////////APIS//////////////////////////////////
 
-router.get('/spotifyAPI/:query', (req, res, next) => {
+router.get("/spotifyAPI/:query", (req, res, next) => {
   let items = [];
 
-  spotifyApi.searchTracks(req.params.query, { limit: 5 })
-    .then((songs) => {
-
-      songs.body.tracks.items.forEach((song) => {
+  spotifyApi
+    .searchTracks(req.params.query, { limit: 5 })
+    .then(songs => {
+      songs.body.tracks.items.forEach(song => {
         let fullSong = {
           name: song.name,
           id: song.id,
           uri: song.uri,
           artist: song.artists,
           img: song.album.images
-        }
+        };
         items.push(fullSong);
-      })
+      });
     })
     .then(() => {
-      res.json(items)
+      res.json(items);
     })
 
     // res.render('/new',data);
     .catch(err => {
       console.error(err);
-
-    })
-
-})
-
-router.post('/uploadPicture', uploadPictureCloud.single("image"), (req, res, next) => {
-  res.json(req.file)
+    });
 });
 
-router.post('/uploadDocument', uploadDocumentCloud.single("document"), (req, res, next) => {
-  res.json(req.file)
-});
+router.post(
+  "/uploadPicture",
+  uploadPictureCloud.single("image"),
+  (req, res, next) => {
+    res.json(req.file);
+  }
+);
 
+router.post(
+  "/uploadDocument",
+  uploadDocumentCloud.single("document"),
+  (req, res, next) => {
+    res.json(req.file);
+  }
+);
 
 router.get("/confirm/:id", (req, res) => {
   Stacks.updateOne(
     { _id: req.params.id },
     {
-      status: "active",
+      status: "active"
     }
-  )
-    .then(updatedStack => {
-      res.redirect("/stacks/adminpanel/pendingpanel");
-    })
+  ).then(updatedStack => {
+    res.redirect("/stacks/adminpanel/pendingpanel");
+  });
 });
 
-
 router.get("/like/:id", (req, res) => {
-  Stacks.updateOne(
-    { _id: req.params.id },
-    { $inc: { likesCounter: 1 } }
-  )
-    .then(updatedStack => {
+  Stacks.updateOne({ _id: req.params.id }, { $inc: { likesCounter: 1 } }).then(
+    updatedStack => {
       User.updateOne(
         { _id: req.user._id },
         { $push: { stacksLiked: req.params.id } }
-      ).then((userUpdated) => {
-        res.redirect("/stacks/")
-      })
-    })
+      ).then(userUpdated => {
+        res.redirect("/stacks/");
+      });
+    }
+  );
 });
 
-/* router.get("/collection", (req, res, next) => {
 
-  Stacks.find({ status: "active" })
-    .sort({ "stacksLiked": -1 })
-    .lean()
-    .then((allStacks) =>{
-      allStacks.findById(req.user.stacksLiked)
-    })
-   
+
+router.get("/collection", (req, res, next) => {
+  User.findById(req.user._id)
+    .populate("stacksLiked")
     
-    .catch(function () {
-      res.redirect("/error")
-    });
-}); */
+    .then((foundUser) => {
+      res.render("stacks/mycollection",{
+        stacks : foundUser.stacksLiked,
+        user: req.user
+      });
+    })
+    .catch(error => console.log(error)
+    );
 
-
-
-
+});
 
 module.exports = router;

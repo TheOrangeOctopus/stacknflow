@@ -387,7 +387,17 @@
       </div>
     </div>
     <div class="bottom-preview-display">
-      <div class="likes-preview-display"><a href="/stacks/like/{{_id }}"><i class="fas fa-heart"></i></a>
+      <div class="likes-preview-display">
+        {{#if ../user}}
+        <a href="/stacks/like/{{_id }}">
+        <i class="fas fa-heart fa-heart2"></i>
+        </a>
+        {{/if}}
+
+        {{#unless ../user}}
+        <i class="fas fa-heart no-hover"></i>
+        {{/unless}}
+
         <h5>{{likesCounter}}</h5>
       </div>
       <div class="autor"><i class="fas fa-user"></i>
