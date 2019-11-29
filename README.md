@@ -59,23 +59,28 @@ You will not see the "Admin Panel" since you are not an admin... are you? 🤔
 
 ## The team 🤝
 
--> Daniel González Vieitez - The Gallician
+-> **Daniel González Vieitez** - *The Gallician*
 @github/danielgonvie
 
--> Fran Naranjo - The Canarian
+-> **Fran Naranjo** - *The Canarian*
 @github/f-naranjo
 
 We both are just students trying to do our best that had fun working together for an entire week for this project.
 
 ## Special thanks 💕
 
-Daniel: 
-> -"Im gratefull to work with Fran. He really shows that he is a true professional."
-> -"As always thanks to my TA Lorena for all the help and all the fun moments we had with the troubleshooting 🤣"
-> -"For last but no the worst thanks Carlos and Sito to the help provided too <3"
-> -"This is my second project and I couldn't be more happy to be at Ironhack and have this amazing lead teacher I have"
+**Daniel:**
+> "Im gratefull to work with Fran. He really shows that he is a true professional."
 
-Fran:
->-""
->-""
->-""
+> "As always thanks to my TA Lorena for all the help and all the fun moments we had with the troubleshooting 🤣"
+
+> "For last but no the worst thanks Carlos and Sito to the help provided too <3"
+
+> "This is my second project and I couldn't be more happy to be at Ironhack and have this amazing lead teacher I have"
+
+**Fran:**
+>""
+
+>""
+
+>""
