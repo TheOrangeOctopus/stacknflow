@@ -347,19 +347,21 @@ function sendInfoToDB() {
     }
     ///// books
     if (step.classList.value.includes("src-book")) {
-      let SPsrcTitle = document.querySelector(".src-book > .new-step-title").innerText
-      let SPsrcDesc = document.querySelector(".src-book > .new-step-description").innerText
-      let SPSongTitle = document.querySelector(".book-title").innerText
-      let SPSongArtist= document.querySelector(".book-author").innerText;
-      let SPuri = document.querySelector(".book-link").value
+      let BKsrcTitle = document.querySelector(".src-book > .new-step-title").innerText
+      let BKsrcDesc = document.querySelector(".src-book > .new-step-description").innerText
+      let BKname = document.querySelector(".book-title").innerText
+      let BKauthor= document.querySelector(".book-author").innerText;
+      let BKurl = document.querySelector(".book-link").value
+      let BKimg = document.querySelector(".book-image").value;
       let step = {
         resource: "book",
-        title: SPsrcTitle,
-        instruction: SPsrcDesc,
+        title: BKsrcTitle,
+        instruction: BKsrcDesc,
         order: idx,
-        url: SPuri,
-        songName: SPSongTitle,
-        songArtist: SPSongArtist
+        url: BKurl,
+        bookName: BKname,
+        bookAuthor: BKauthor,
+        bookImage: BKimg
       }
       hasBook = true
       steps.push(step)
@@ -583,7 +585,11 @@ function bookSearch() {
       let imgDomel = document.createElement("img")
       let instDomel = document.createElement("span")
       let linkDomEl = document.createElement("input")
+      let imgHidden = document.createElement("input")
 
+      imgHidden.setAttribute("type","hidden")
+      imgHidden.setAttribute("class","book-image")
+      imgHidden.setAttribute(`value`,`${volumeInfo.imageLinks.thumbnail}`)
       linkDomEl.setAttribute("type","hidden")
       linkDomEl.setAttribute("class","book-link")
       linkDomEl.setAttribute(`value`,`${volumeInfo.infoLink}`)
@@ -592,6 +598,7 @@ function bookSearch() {
       imgDomel.setAttribute("class", "book-img")
       imgContainer.appendChild(imgDomel)
       
+      infoContainer.appendChild(imgHidden)
       infoContainer.appendChild(titleDomel)
       infoContainer.appendChild(authorsDomel)
       infoContainer.appendChild(instDomel)
