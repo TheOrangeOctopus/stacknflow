@@ -1,108 +1,81 @@
-# stacknfly
-First Fullstack project based in recommendation of a set of activities to do in your spare time.
+![alt text](https://i.ibb.co/jftXMwv/imagen.png)
+# StacknFLow 
 
-# StacknFLow
-
-_Acá va un párrafo que describa lo que es el proyecto_
-
-## Comenzando 🚀
-
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
-
-Mira **Deployment** para conocer como desplegar el proyecto.
+First Fullstack web project based in a recommendation of a set of activities to do in your spare time. 
 
 
-### Pre-requisitos 📋
+## About 📝
+This project has the next features:
+-Login and Sign up. And Login with Google)
+-User roles -> "user" and "admin"
+-Full CRUD (if you are Admin 😎)
+-Upload files!
+-Search songs with Spotify API
+-Search books with Google Books API
 
-_Que cosas necesitas para instalar el software y como instalarlas_
+Was made with HTML5, CSS3, Javascript, Node.js, Express.js, MongoDB, Mongoose and Heroku to deploy it via web 💻
 
-```
-Da un ejemplo
-```
-
-### Instalación 🔧
-
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
-
-_Dí cómo será ese paso_
-
-```
-Da un ejemplo
-```
-
-_Y repite_
-
-```
-hasta finalizar
-```
-
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
-
-## Ejecutando las pruebas ⚙️
-
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-### Analice las pruebas end-to-end 🔩
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-## Despliegue 📦
-
-_Agrega notas adicionales sobre como hacer deploy_
-
-## Construido con 🛠️
-
-_Menciona las herramientas que utilizaste para crear tu proyecto_
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
-
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
-
-## Versionado 📌
-
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
-
-## Autores ✒️
-
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
-
-## Licencia 📄
-
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
-## Expresiones de Gratitud 🎁
-
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
-* etc.
+And the following dependencies of Node.js:
+`{
+    "axios": "^0.19.0",
+    "bcrypt": "^3.0.0",
+    "body-parser": "^1.18.3",
+    "cloudinary": "^1.17.0",
+    "connect-ensure-login": "^0.1.1",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^3.1.2",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "google-books-search": "^0.3.1",
+    "googleapis": "^45.0.0",
+    "hbs": "^4.0.1",
+    "mongoose": "^5.2.10",
+    "morgan": "^1.9.0",
+    "multer": "^1.4.2",
+    "multer-storage-cloudinary": "^2.2.1",
+    "node-sass-middleware": "^0.11.0",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^2.0.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "^2.5.0",
+    "spotify-web-api-node": "^4.0.0",
+    "swag": "^0.7.0"
+  }`
 
 
+### Optimal conditions 🖥️
+This webpage was prepared for a min 1366x768 resolution. 
+(We want o improve this)
 
----
-⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
+
+## Try it yourself ✔️
+
+Go to https://stacknfly.herokuapp.com/ and check it out. 
+No verification email required, so Log in with Google o Register to start suggesting Stacks.
+You will not see the "Admin Panel" since you are not an admin... are you? 🤔
+
+## The team 🤝
+
+-> Daniel González Vieitez - The Gallician
+@github/danielgonvie
+
+-> Fran Naranjo - The Canarian
+@github/f-naranjo
+
+We both are just students trying to do our best that had fun working together for an entire week for this project.
+
+## Special thanks 💕
+
+Daniel: 
+> "Im gratefull to work with Fran. He really shows that he is a true professional."
+> "As always thanks to my TA Lorena for all the help and all the fun moments we had with the troubleshooting 🤣"
+> "For last but no the worst thanks Carlos and Sito to the help provided too <3"
+> "This is my second project and I couldn't be more happy to be at Ironhack and have this amazing lead teacher I have"
+
+Fran:
+>""
+>""
+>""
