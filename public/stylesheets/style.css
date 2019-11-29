@@ -727,7 +727,7 @@ button:active {
   margin: 0 1rem 0 0;
   transition: 0.2s; }
 
-.fa-heart:hover {
+.fa-heart2:hover {
   color: #b52424;
   font-size: 1.8rem;
   margin: 0 1rem 0 0;
@@ -832,6 +832,15 @@ button:active {
   color: inherit; }
   .previews :hover {
     cursor: pointer; }
+
+.no-hover {
+  color: #145B82;
+  font-size: 1.8rem;
+  margin: 0 1rem 0 0;
+  transition: 0.2s; }
+  .no-hover :hover {
+    cursor: default;
+    color: #145B82; }
 
 .ghost {
   opacity: .1;
