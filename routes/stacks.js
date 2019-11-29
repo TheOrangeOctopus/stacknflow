@@ -304,20 +304,24 @@ router.post('/new', (req, res, next) => {
       })
   });
 
-  /* router.get("/collection", (req, res, next) => {
-
-    Stacks.find({ status: "active" })
-      .sort({ "stacksLiked": -1 })
-      .lean()
-      .then((allStacks) =>{
-        allStacks.findById(req.user.stacksLiked)
-      })
-     
+  router.get("/collection", (req, res, next) => {
+    console.log(req.user._id)
+    User.findById(req.user._id)
+      .populate({ path: "stacksLiked" })
+      .then(stacksLiked => {
       
+      res.render(
+        "stacks/mycollection",{
+        stacks: stacksLiked,
+        user: req.user,
+      })
+      
+    })
+     
       .catch(function () {
         res.redirect("/error")
       });
-  }); */
+  });
 
 
 
