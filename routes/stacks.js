@@ -312,15 +312,12 @@ router.post('/new', (req, res, next) => {
       .then((allStacks) =>{
         allStacks.findById(req.user.stacksLiked)
       })
-      .then((stacksLiked) => res.render("stacks/mycollection", {
-        stacks: stacksLiked
-      })
-      )
+     
       
       .catch(function () {
         res.redirect("/error")
-      }); */
-  });
+      });
+  }); */
 
 
 

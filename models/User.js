@@ -11,8 +11,7 @@ const userSchema = new Schema({
   //stacksCreated: [{type: Schema.Types.ObjectId,ref: "Stack"}] ,
   stacksSaved: Array,
   //stacksSaved: [{type: Schema.Types.ObjectId,ref: "Stack"}],
-  stacksLiked: Array
-  //stacksLiked: [{type: Schema.Types.ObjectId,ref: "Stack"}],
+  stacksLiked: [{type: Schema.Types.ObjectId,ref: "Stack"}],
 }, {
   timestamps: {
     createdAt: 'created_at',
