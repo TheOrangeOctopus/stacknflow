@@ -8,10 +8,10 @@ const userSchema = new Schema({
   banned: {type: Boolean, deafult: false},
   rol: {type: String, enum: ["user", "admin", "mod"], default: "user"},
   stacksCreated: Array,
-  //stacksCreated: [{type: Schema.Types.ObjectId,ref: "Stack"}] ,
+  //stacksCreated: [{type: Schema.Types.ObjectId,ref: "Stacks"}] ,
   stacksSaved: Array,
-  //stacksSaved: [{type: Schema.Types.ObjectId,ref: "Stack"}],
-  stacksLiked: [{type: Schema.Types.ObjectId,ref: "Stack"}],
+  //stacksSaved: [{type: Schema.Types.ObjectId,ref: "Stacks"}],
+  stacksLiked: [{type: Schema.Types.ObjectId,ref: "Stacks"}],
 }, {
   timestamps: {
     createdAt: 'created_at',
