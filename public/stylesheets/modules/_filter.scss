@@ -6,7 +6,17 @@
   flex-wrap: nowrap;
   width: $globalwidth;
   max-width: $maxwidth;
-  margin-top: 1rem;
+  margin-top: 3rem;
+  .active{
+    background-color:$primarycolor;
+    transition:0.2s;
+    }
+  .active svg,
+  .active h4,
+  .active i{
+    fill:$white;
+    color:$white !important;
+  }
   .le-fix {
 	display: flex;
 	flex-direction: row;

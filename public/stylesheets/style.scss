@@ -1,5 +1,7 @@
+
 @import 'abstract/variables';
 @import 'base/reset';
+@import 'pages/stackdetail';
 @import 'layout/auth';
 @import 'base/typography';
 @import 'layout/nav';
@@ -9,5 +11,4 @@
 @import 'modules/filter';
 @import 'pages/home';
 @import 'pages/newstack';
-@import 'pages/stackdetail';
 @import 'modules/hero';

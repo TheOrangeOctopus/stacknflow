@@ -10,7 +10,7 @@ nav {
   top: 0; /* Position the navbar at the top of the page */
   left: 0;
   width: 100%; /* Full width */
-  z-index: 100;
+  z-index: 999;
   // border-bottom:2px solid $primarycolor;
 }
 
@@ -25,11 +25,12 @@ nav div{
     margin: 0 1rem;
     padding:1rem 2rem;
     transform: translateX(0);
+    color:$primarycolor;
   }
   a:hover{
     margin: 0 1rem;
     background-color: $primarycolor;
-    color:$white;
+    color:$white!important;
     transition: 0.3s ease-out;
   }
   a:active{
@@ -37,12 +38,7 @@ nav div{
     color:$primarycolor;
     background-color: $white;
   }
-  a:visited{
-    color:$primarycolor;
-  }
-  a:visited:hover{
-    color:$white;
-  }
+
 }
 
 .logo-wrapper{
@@ -93,7 +89,7 @@ nav div{
 }
 
 .subnav-link{
-  // margin-top:3rem;
+  margin-top:3rem;
   transition:0.3s ease-in;
   text-decoration: none;
 
