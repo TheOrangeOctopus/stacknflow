@@ -334,3 +334,44 @@ h1{
   display: flex;
   justify-content: space-between;
 }
+
+.checkbox{
+  color: $primarycolor;
+  fill: $primarycolor;
+}
+.success-page{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height:40vh;
+  
+  a{
+    margin: 0 1rem;
+    padding:1rem 2rem;
+    transform: translateX(0);
+    text-decoration: none;
+    background-color: $white;
+    color:$primarycolor;
+    border:2px solid $primarycolor;
+    
+  }
+  a:hover{
+    margin: 0 1rem;
+    background-color: $primarycolor;
+    color:$white;
+    transition: 0.3s ease-out;
+    border:2px solid $primarycolor;
+  }
+  a:active{
+    border:2px solid $primarycolor;
+    color:$white;
+    background-color: $primarycolor$white;
+  }
+  a:visited{
+    color:$primarycolor;
+  }
+  a:visited:hover{
+    color:$white;
+  }
+}

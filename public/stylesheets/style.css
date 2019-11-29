@@ -80,7 +80,7 @@ input {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  border: 2px solid yellow;
+  border: 2px solid #145B82;
   background-color: rgba(255, 255, 255, 0.95);
   position: fixed;
   width: 25rem;
@@ -100,14 +100,14 @@ input {
     margin: 0; }
     .login-box .login-fields label {
       margin: 1.2rem 0 0rem 0;
-      color: yellow; }
+      color: #145B82; }
     .login-box .login-fields input {
       margin: 1rem 0;
       background-color: #EBF4E7;
       padding: 1rem 0.5rem; }
     .login-box .login-fields input:focus {
       margin: 1rem 0;
-      background-color: yellow;
+      background-color: #145B82;
       padding: 1rem 0.5rem;
       color: #ffffff;
       outline: none; }
@@ -127,11 +127,11 @@ input {
   width: 50vw;
   justify-content: center;
   align-items: center;
-  border: 2px solid yellow; }
+  border: 2px solid #145B82; }
   .signup-wrapper h2 {
     font-size: 3rem;
     background-color: rgba(255, 255, 255, 0);
-    color: yellow;
+    color: #145B82;
     margin: 3rem 0;
     font-weight: 600; }
   .signup-wrapper p {
@@ -141,7 +141,7 @@ input {
     font-size: 1.6rem; }
   .signup-wrapper input {
     padding: 1.5rem;
-    border: 2px solid yellow;
+    border: 2px solid #145B82;
     margin-bottom: 3rem;
     width: 100%; }
   .signup-wrapper form {
@@ -168,7 +168,7 @@ h1 {
 
 h2 {
   font-size: 1.8rem;
-  background-color: yellow;
+  background-color: #145B82;
   color: #ffffff;
   padding: 0 1rem;
   font-weight: 200;
@@ -235,15 +235,15 @@ nav div {
     transform: translateX(0); }
   nav div a:hover {
     margin: 0 1rem;
-    background-color: yellow;
+    background-color: #145B82;
     color: #ffffff;
     transition: 0.3s ease-out; }
   nav div a:active {
-    border: 2px solid yellow;
-    color: yellow;
+    border: 2px solid #145B82;
+    color: #145B82;
     background-color: #ffffff; }
   nav div a:visited {
-    color: yellow; }
+    color: #145B82; }
   nav div a:visited:hover {
     color: #ffffff; }
 
@@ -264,7 +264,7 @@ nav div {
   transition: 0.3s; }
 
 .mainlogo {
-  fill: yellow;
+  fill: #145B82;
   stroke-dashoffset: 1px;
   width: 18rem;
   align-self: center; }
@@ -292,10 +292,10 @@ nav div {
 
 button {
   background-color: transparent;
-  border: 2px solid yellow;
+  border: 2px solid #145B82;
   display: inline-block;
   cursor: pointer;
-  color: yellow;
+  color: #145B82;
   font-size: 1rem;
   padding: 1rem 2rem;
   text-decoration: none;
@@ -303,7 +303,7 @@ button {
   transition: 0.3s; }
 
 button:hover {
-  background-color: yellow;
+  background-color: #145B82;
   color: #ffffff;
   transition: 0.3s; }
 
@@ -363,11 +363,11 @@ button:active {
         align-items: center;
         flex-wrap: nowrap;
         border-radius: 42%;
-        border: 0.1rem solid yellow;
+        border: 0.1rem solid #145B82;
         padding: 0.4rem 0.9rem;
         margin: 0rem 0.3rem;
         cursor: pointer;
-        color: yellow; }
+        color: #145B82; }
     .le-filter .le-fix .le-category {
       display: flex;
       flex-direction: row;
@@ -380,7 +380,7 @@ button:active {
         justify-content: center;
         align-items: center;
         border-radius: 40%;
-        border: 0.1rem solid yellow;
+        border: 0.1rem solid #145B82;
         padding: 0.4rem 1.3rem;
         margin: 0rem 0.3rem;
         cursor: pointer; }
@@ -390,7 +390,7 @@ button:active {
         justify-content: center;
         align-items: center;
         border-radius: 40%;
-        border: 0.1rem solid yellow;
+        border: 0.1rem solid #145B82;
         padding: 0.4rem 1.3rem;
         margin: 0rem 0.3rem;
         cursor: pointer; }
@@ -400,7 +400,7 @@ button:active {
         justify-content: center;
         align-items: center;
         border-radius: 40%;
-        border: 0.1rem solid yellow;
+        border: 0.1rem solid #145B82;
         padding: 0.4rem 1.3rem;
         margin: 0rem 0.3rem;
         cursor: pointer; }
@@ -410,7 +410,7 @@ button:active {
         justify-content: center;
         align-items: center;
         border-radius: 40%;
-        border: 0.1rem solid yellow;
+        border: 0.1rem solid #145B82;
         padding: 0.4rem 1.3rem;
         margin: 0rem 0.3rem;
         cursor: pointer; }
@@ -426,7 +426,7 @@ button:active {
         justify-content: center;
         align-items: center;
         border-radius: 45%;
-        border: 0.1rem solid yellow;
+        border: 0.1rem solid #145B82;
         padding: 0.4rem 0.7rem;
         margin: 0rem 0.3rem;
         cursor: pointer; }
@@ -439,7 +439,7 @@ button:active {
         justify-content: center;
         align-items: center;
         border-radius: 45%;
-        border: 0.1rem solid yellow;
+        border: 0.1rem solid #145B82;
         padding: 0.4rem 0.6rem;
         margin: 0rem 0.3rem;
         cursor: pointer; }
@@ -452,7 +452,7 @@ button:active {
         justify-content: center;
         align-items: center;
         border-radius: 45%;
-        border: 0.1rem solid yellow;
+        border: 0.1rem solid #145B82;
         padding: 0.4rem 0.8rem;
         margin: 0rem 0.3rem;
         cursor: pointer; }
@@ -465,7 +465,7 @@ button:active {
         justify-content: center;
         align-items: center;
         border-radius: 45%;
-        border: 0.1rem solid yellow;
+        border: 0.1rem solid #145B82;
         padding: 0.4rem 0.9rem;
         margin: 0rem 0.3rem;
         cursor: pointer; }
@@ -478,7 +478,7 @@ button:active {
         justify-content: center;
         align-items: center;
         border-radius: 45%;
-        border: 0.1rem solid yellow;
+        border: 0.1rem solid #145B82;
         padding: 0.4rem 0.7rem;
         margin: 0rem 0.3rem;
         cursor: pointer; }
@@ -498,7 +498,7 @@ button:active {
   padding: 1.5rem;
   width: 35rem;
   height: 40rem;
-  border: 2px solid yellow;
+  border: 2px solid #145B82;
   box-shadow: 10px 10px 0px 2px #EBF4E7;
   margin-top: 5rem;
   display: flex;
@@ -510,14 +510,14 @@ button:active {
     transition: 0.3s; }
   .one-stack a {
     text-decoration: none;
-    color: yellow;
+    color: #145B82;
     transition: 0.2s; }
   .one-stack a:hover {
     text-decoration: underline;
     transition: 0.2s; }
 
 .one-stack:hover {
-  box-shadow: 10px 10px 0px 2px yellow;
+  box-shadow: 10px 10px 0px 2px #145B82;
   transition: 0.3s; }
 
 .mid-preview-display {
@@ -529,11 +529,11 @@ button:active {
 .category-logo {
   height: 2.5rem;
   width: 2.5rem;
-  color: yellow;
-  fill: yellow; }
+  color: #145B82;
+  fill: #145B82; }
 
 .fa-heart {
-  color: yellow;
+  color: #145B82;
   font-size: 1.8rem;
   margin: 0 1rem 0 0;
   transition: 0.2s; }
@@ -547,12 +547,12 @@ button:active {
 .stopwatch {
   width: 2.5rem;
   height: 2.5rem;
-  fill: yellow; }
+  fill: #145B82; }
 
 .fa-user {
   font-size: 1.8rem;
   margin-right: 1rem;
-  color: yellow; }
+  color: #145B82; }
 
 .autor {
   display: flex;
@@ -560,7 +560,7 @@ button:active {
   padding: 0.5rem 1rem;
   background-color: #EBF4E7; }
   .autor p {
-    color: yellow; }
+    color: #145B82; }
 
 .autor .fa-heart-loved {
   color: #b52424;
@@ -569,12 +569,12 @@ button:active {
 .source-logo i {
   font-size: 2.2rem;
   margin: 0rem 0.8rem;
-  color: yellow; }
+  color: #145B82; }
 
 .source-logo:first-of-type i {
   font-size: 2.2rem;
   margin: 0rem 0.8rem 0 0;
-  color: yellow; }
+  color: #145B82; }
 
 .time-logo {
   height: 2rem;
@@ -653,10 +653,10 @@ button:active {
 
 .stack-categorytime select {
   background-color: #ffffff;
-  color: yellow;
+  color: #145B82;
   padding: 1rem;
   width: 10rem;
-  border: 2px solid yellow;
+  border: 2px solid #145B82;
   font-size: 1.8rem;
   -webkit-appearance: select;
   appearance: select;
@@ -670,7 +670,7 @@ button:active {
 h3 {
   font-size: 1.6em;
   margin: 0rem 0 1rem 0;
-  color: yellow; }
+  color: #145B82; }
 
 .new-stack-wrapper {
   width: 100%;
@@ -683,7 +683,7 @@ h3 {
     margin: 1rem 0; }
   .new-stack-wrapper h2 {
     font-size: 2.5rem;
-    color: yellow;
+    color: #145B82;
     padding: 0;
     background: none; }
   .new-stack-wrapper textarea {
@@ -692,7 +692,7 @@ h3 {
 .creation-border {
   display: flex;
   width: 50%;
-  background-color: yellow;
+  background-color: #145B82;
   padding: 2rem;
   min-height: 90vh; }
 
@@ -724,7 +724,7 @@ h1 {
     flex-direction: column;
     margin: 1rem 0 2rem 0; }
     .creation .stack-titledesc input {
-      border: 2px solid yellow; }
+      border: 2px solid #145B82; }
   .creation .stack-imageupload {
     display: flex;
     flex-direction: column;
@@ -734,15 +734,15 @@ h1 {
     justify-content: space-between;
     align-items: center; }
     .creation .imageupload-select a {
-      background-color: yellow;
+      background-color: #145B82;
       color: #ffffff;
       padding: 1rem 2rem;
       border: 2px solid #ffffff;
       transition: 0.3s; }
     .creation .imageupload-select a:hover {
       background-color: #ffffff;
-      border: 2px solid yellow;
-      color: yellow;
+      border: 2px solid #145B82;
+      color: #145B82;
       padding: 1rem 2rem;
       transition: 0.3s;
       cursor: pointer; }
@@ -773,7 +773,7 @@ h1 {
     width: 100%; }
 
 .new-border {
-  border: 2px solid yellow;
+  border: 2px solid #145B82;
   padding: 2rem; }
 
 .btn-stackInfo,
@@ -862,7 +862,7 @@ h1 {
 
 .new-step {
   padding: 1rem 1rem;
-  border-top: 2px solid yellow;
+  border-top: 2px solid #145B82;
   transition: all 0.3s; }
 
 .new-step:hover {
@@ -871,8 +871,8 @@ h1 {
 
 .new-step:last-of-type {
   padding: 1rem 1rem;
-  border-top: 2px solid yellow;
-  border-bottom: 2px solid yellow;
+  border-top: 2px solid #145B82;
+  border-bottom: 2px solid #145B82;
   transition: all 0.3s;
   margin-bottom: 2px; }
 
@@ -885,6 +885,39 @@ h1 {
   width: 100%;
   display: flex;
   justify-content: space-between; }
+
+.checkbox {
+  color: #145B82;
+  fill: #145B82; }
+
+.success-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 40vh; }
+  .success-page a {
+    margin: 0 1rem;
+    padding: 1rem 2rem;
+    transform: translateX(0);
+    text-decoration: none;
+    background-color: #ffffff;
+    color: #145B82;
+    border: 2px solid #145B82; }
+  .success-page a:hover {
+    margin: 0 1rem;
+    background-color: #145B82;
+    color: #ffffff;
+    transition: 0.3s ease-out;
+    border: 2px solid #145B82; }
+  .success-page a:active {
+    border: 2px solid #145B82;
+    color: #ffffff;
+    background-color: #145B82 #ffffff; }
+  .success-page a:visited {
+    color: #145B82; }
+  .success-page a:visited:hover {
+    color: #ffffff; }
 
 .html-detail {
   width: 60%;
@@ -919,14 +952,14 @@ h1 {
       font-size: 4rem;
       margin-left: 2rem; }
     .header-detail .info-detail h4 {
-      color: yellow;
+      color: #145B82;
       background-color: #EBF4E7;
       margin-left: 2rem;
       padding: 1rem 2rem;
       font-size: 1.6rem; }
 
 .description-detail {
-  border: 2px solid yellow;
+  border: 2px solid #145B82;
   margin: 2rem 0;
   padding: 2rem; }
   .description-detail p {
@@ -947,12 +980,12 @@ h1 {
     margin-left: -8.4rem;
     padding: 1rem 1.4rem;
     border-radius: 50%;
-    background-color: yellow; }
+    background-color: #145B82; }
   .one-step .step-desc-detail h2 {
     font-size: 2rem;
     font-weight: 600;
     background-color: #ffffff;
-    color: yellow;
+    color: #145B82;
     padding: 0;
     margin: 1rem 0; }
   .one-step .step-youtube {
@@ -982,7 +1015,7 @@ h1 {
       justify-content: space-between; }
       .one-step .step-googlebook .google-desc h2 {
         background-color: #ffffff;
-        color: yellow;
+        color: #145B82;
         margin-bottom: 1rem;
         font-size: 1.8rem;
         padding: 0;
@@ -992,7 +1025,7 @@ h1 {
         font-size: 1.6rem;
         padding: 0.5rem 1rem;
         background-color: #EBF4E7;
-        color: yellow;
+        color: #145B82;
         transition: 0.3s; }
       .one-step .step-googlebook .google-desc a:hover::before {
         content: ">> "; }
@@ -1013,7 +1046,7 @@ h1 {
       justify-content: space-between; }
       .one-step .step-doc .doc-desc h2 {
         background-color: #ffffff;
-        color: yellow;
+        color: #145B82;
         margin-bottom: 1rem;
         font-size: 1.8rem;
         padding: 0;
@@ -1023,7 +1056,7 @@ h1 {
         font-size: 1.6rem;
         padding: 0.5rem 1rem;
         background-color: #EBF4E7;
-        color: yellow;
+        color: #145B82;
         transition: 0.3s; }
       .one-step .step-doc .doc-desc a:hover::before {
         content: ">> "; }
@@ -1044,7 +1077,7 @@ h1 {
       justify-content: space-between; }
       .one-step .step-link .link-desc h2 {
         background-color: #ffffff;
-        color: yellow;
+        color: #145B82;
         margin-bottom: 1rem;
         font-size: 1.8rem;
         padding: 0;
@@ -1054,7 +1087,7 @@ h1 {
         font-size: 1.6rem;
         padding: 0.5rem 1rem;
         background-color: #EBF4E7;
-        color: yellow;
+        color: #145B82;
         transition: 0.3s; }
       .one-step .step-link .link-desc a:hover::before {
         content: ">> "; }
@@ -1062,7 +1095,7 @@ h1 {
         transform: translateX(2rem); }
 
 .one-step:hover {
-  box-shadow: 10px 10px 0px 2px yellow; }
+  box-shadow: 10px 10px 0px 2px #145B82; }
 
 #wrapper-index {
   display: flex;
@@ -1078,17 +1111,17 @@ h1 {
   #wrapper-index a {
     font-size: 1.8rem;
     padding: 2rem 4rem;
-    background-color: yellow;
+    background-color: #145B82;
     color: #EBF4E7;
     margin: 2rem 0;
     text-decoration: none;
-    border: 2px solid yellow; }
+    border: 2px solid #145B82; }
   #wrapper-index a:hover::before {
     content: ">> ";
     transition: 0.5s; }
   #wrapper-index a:hover {
-    border: 2px solid yellow;
-    color: yellow;
+    border: 2px solid #145B82;
+    color: #145B82;
     background-color: #EBF4E7;
     transition: 0.3s; }
 
@@ -1097,11 +1130,11 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  fill: yellow;
+  fill: #145B82;
   width: 50%; }
 
 .logobig {
-  fill: yellow;
+  fill: #145B82;
   width: 100%; }
 
 /*# sourceMappingURL=style.css.map */

@@ -402,7 +402,7 @@ function sendInfoToDB() {
 
   axios.post('/stacks/new', body)
     .then(response => {
-      ;
+  
     })
 }
 
@@ -477,6 +477,7 @@ if(uploadStackPic !== null){
   saveStackBtn.addEventListener("click", function (e) {
     e.preventDefault()
     sendInfoToDB()
+    location.href = "/stacks/success"
   })
 }
 

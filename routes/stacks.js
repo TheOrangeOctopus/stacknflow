@@ -224,6 +224,12 @@ router.post('/new', (req, res, next) => {
       });
   });
 
+  router.get('/success', (req, res, next) => {
+    res.render('stacks/success', {
+      user: req.user
+    });
+  });
+
   router.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");
@@ -278,7 +284,7 @@ router.post('/new', (req, res, next) => {
       }
     )
       .then(updatedStack => {
-        res.redirect("/stacks/pendingpanel");
+        res.redirect("/stacks/adminpanel/pendingpanel");
       })
   });
 
@@ -298,8 +304,24 @@ router.post('/new', (req, res, next) => {
       })
   });
 
+  /* router.get("/collection", (req, res, next) => {
 
-  // Login Google
+    Stacks.find({ status: "active" })
+      .sort({ "stacksLiked": -1 })
+      .lean()
+      .then((allStacks) =>{
+        allStacks.findById(req.user.stacksLiked)
+      })
+      .then((stacksLiked) => res.render("stacks/mycollection", {
+        stacks: stacksLiked
+      })
+      )
+      
+      .catch(function () {
+        res.redirect("/error")
+      }); */
+  });
+
 
 
 
