@@ -33,7 +33,10 @@ const stackSchema = new Schema({
     order:Number,
     songName:String,
     songArtist:String,
-    docName:String
+    docName:String,
+    bookName: String,
+    bookAuthor: String,
+    bookImage: String,
      }],
     hasMusic: Boolean,
     hasBook: Boolean ,

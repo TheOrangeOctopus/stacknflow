@@ -19,14 +19,202 @@ let uploadDoc = document.querySelector(".upload-document")
 let uploadDocDomEl = document.querySelector(".file-source")
 let stepsContainer = document.querySelector("#stepsContainer")
 let logo = document.querySelector(".logo-wrapper")
+let leFilter = document.querySelector(".le-filter")
+let loadingIcon = document.querySelector(".loading")
+
+///FILTER DOM EL
+if (leFilter !== null) {
+  stacksFilter()
+}
+
+function setloadingState(DOMEl,boolean){
+  let imgLoading = document.createElement("img")
+  if(boolean){
+    imgLoading.setAttribute("class","loading")
+    imgLoading.setAttribute("src","/images/loading.gif")
+    DOMEl.appendChild(imgLoading)
+  }else{
+    imgLoading.remove()
+  }
+}
+
+///FILTER
+//FUNCTION FILTERSTACKS()
+
+//SELECCIONAR TIEMPO - MULTIPLE //SELECCIONAR CATEGORIA - MULTIPLE // SELECCION MEDIA -- MULTIPLE
+
+//VARIABLE DE BUSQUEDA ACUMULATIVA
+
+
+//EVENTOS:
+//ONCLICK EN CADA UNO (FOREACH):
+//TIENE CLASE FILTER.ACTIVE?
+
+//FALSE:
+//SET CLASS A FILTER.ACTIVE
+//AÑADIR A VARIABLE DE BÚSQUEDA (REVISAR FORMATO)
+//EJECUTAR FUNCIÓN FILTER PASANDO EL PARAMETRO DE BUSQUEDA FILTER(QUERY)
+
+//TRUE:
+//TOGGLE CLASS FILTER.ACTIVE
+//ELIMINAR VAVRIABLE DE BUSQUEDA (REVISAR FORMATO)
+//EJECUTAR FUNCIÓN FILTER PASANDO EL PARÁMETRO DE BÚSQUEDA FILTER(QUERY)
+
+
+function stacksFilter() {
+  let timeFilterDOMEl = document.querySelectorAll(".filter-sw")
+  let categoryFilterDOMEl = document.querySelectorAll(".filter-cat")
+  let sourceFilterDOMEl = document.querySelectorAll(".filter-src")
+
+  let query = "";
+
+  function filterStacks(query) {
+    // axios.get(`/stacks/lefilter/${query}`)
+    //   .then(filteredStacks => {
+    //     res.render("show", filteredStacks.data)
+    //   })
+  }
+
+  timeFilterDOMEl.forEach((filter) => {
+    filter.addEventListener("click", function (e) {
+      e.preventDefault()
+      if (filter.classList.contains("active")) {
+        filter.classList.toggle("active")
+        if (filter.classList.contains("1h")) {
+          // query +="/1"
+          filterStacks(query)
+        }
+        if (filter.classList.contains("2h")) {
+          // query +="/2"
+          filterStacks(query)
+        }
+        if (filter.classList.contains("4h")) {
+          // query +="/4"
+          filterStacks(query)
+        }
+
+      } else {
+        filter.classList.toggle("active")
+        if (filter.classList.contains("1h")) {
+          // query +="/1"
+          filterStacks(query)
+        }
+        if (filter.classList.contains("2h")) {
+          // query +="/2"
+          filterStacks(query)
+        }
+        if (filter.classList.contains("4h")) {
+          // query +="/4"
+          filterStacks(query)
+        }
+
+      }
+    })
+  })
+
+
+  categoryFilterDOMEl.forEach((filter) => {
+    filter.addEventListener("click", function (e) {
+    if(filter.classList.contains("active")){
+      filter.classList.toggle("active")
+        if(filter.classList.contains("")){
+          //query +=
+          filterStacks(query)
+        }
+        if(filter.classList.contains("")){
+          //query +=
+          filterStacks(query)
+        }
+        if(filter.classList.contains("")){
+          //query +=
+          filterStacks(query)
+        }
+        if(filter.classList.contains("")){
+          //query +=
+          filterStacks(query)
+        }
+      }else{
+        filter.classList.toggle("active")
+        if(filter.classList.contains("")){
+          //query +=
+          filterStacks(query)
+        }
+        if(filter.classList.contains("")){
+          //query +=
+          filterStacks(query)
+        }
+        if(filter.classList.contains("")){
+          //query +=
+          filterStacks(query)
+        }
+        if(filter.classList.contains("")){
+          //query +=
+          filterStacks(query)
+      }
+    }
+  })
+})
+
+  sourceFilterDOMEl.forEach((filter)=>{
+    filter.addEventListener("click", function (e) {
+      if(filter.classList.contains("active")){
+        filter.classList.toggle("active")
+          if(filter.classList.contains("spotify")){
+            //query +=
+            filterStacks(query)
+          }
+          if(filter.classList.contains("youtube")){
+            //query +=
+            filterStacks(query)
+          }
+          if(filter.classList.contains("book")){
+            //query +=
+            filterStacks(query)
+          }
+          if(filter.classList.contains("link")){
+            //query +=
+            filterStacks(query)
+          }
+          if(filter.classList.contains("file")){
+            //query +=
+            filterStacks(query)
+          }
+        }else{
+          filter.classList.toggle("active")
+          if(filter.classList.contains("spotify")){
+            //query +=
+            filterStacks(query)
+          }
+          if(filter.classList.contains("youtube")){
+            //query +=
+            filterStacks(query)
+          }
+          if(filter.classList.contains("book")){
+            //query +=
+            filterStacks(query)
+          }
+          if(filter.classList.contains("link")){
+            //query +=
+            filterStacks(query)
+        }
+          if(filter.classList.contains("file")){
+            //query +=
+            filterStacks(query)
+        }
+      }
+    })
+  })
+
+
+}
 
 
 
-/////// SORTABLE
 
 
 
-logo.addEventListener("click",function(){
+//////END OF FILTER
+logo.addEventListener("click", function () {
   window.location.href = "/stacks";
 })
 ///// VIVUS
@@ -37,31 +225,32 @@ const myVivus = new Vivus('mainlogo', {
   start: 'autostart'
 });
 
-  setInterval(function(){
-    myVivus
+setInterval(function () {
+  myVivus
     .stop()
     .reset()
     .play(1)
-  },10000)
-  
+}, 8000)
+
 
 // General Functions
-function createHiddenInput(classOfParentDomEl,value,id){
-  let parentDomEl = document.querySelector(`.${classOfParentDomEl}`)    
+function createHiddenInput(classOfParentDomEl, value, id) {
+  let parentDomEl = document.querySelector(`.${classOfParentDomEl}`)
   let input = document.createElement("input")
-      input.setAttribute(`type`,`hidden`)
-      input.setAttribute(`id`,`${id}`)
-      input.setAttribute(`value`,`${value}`)
-      parentDomEl.appendChild(input)
+  input.setAttribute(`type`, `hidden`)
+  input.setAttribute(`id`, `${id}`)
+  input.setAttribute(`value`, `${value}`)
+  parentDomEl.appendChild(input)
 }
 
 function uploadPicture(inputID, destinationDomEl) {
- 
+  // loadingIcon.classList.toggle("hidden")
+  
   let uploadedImgDomEl = document.createElement("div")
   let img = document.createElement("img")
   let imgContainer = document.querySelector(`${destinationDomEl}`)
   let hiddenUrl = document.createElement("input")
-
+  setloadingState(imgContainer,true)
   hiddenUrl.setAttribute("class", "img-source")
   hiddenUrl.setAttribute("type", "hidden")
 
@@ -79,8 +268,10 @@ function uploadPicture(inputID, destinationDomEl) {
     uploadedImgDomEl.appendChild(hiddenUrl)
     img.setAttribute(`src`, `${imageUploaded.data.url}`)
     imgContainer.appendChild(uploadedImgDomEl)
+    // loadingIcon.classList.toggle("hidden")
+    setloadingState(imgContainer,false)
   })
-
+  
 }
 
 function uploadDocument(inputID, destinationDomEl) {
@@ -90,7 +281,7 @@ function uploadDocument(inputID, destinationDomEl) {
   let docContainer = document.querySelector(`${destinationDomEl}`)
   let hiddenUrl = document.createElement("input")
   let docName = document.createElement("p")
-
+  setloadingState(docContainer,true)
   hiddenUrl.setAttribute("class", "doc-source")
   hiddenUrl.setAttribute("type", "hidden")
   uploadedDocDomEl.setAttribute("class", "uploaded-document")
@@ -103,6 +294,7 @@ function uploadDocument(inputID, destinationDomEl) {
       'Content-Type': 'multipart/form-data'
     }
   }).then((documentUploaded) => {
+    setloadingState(docContainer,false)
     docContainer.innerHTML = ""
     hiddenUrl.value = documentUploaded.data.url
     docName.innerHTML = documentUploaded.data.originalname
@@ -157,7 +349,7 @@ function loadInfoFromEditor() {
   let previewFormTimeDomEl = document.querySelector("#time")
   let previewFormImg = document.querySelector(".new-img-stack")
   let previewImgContainer = document.querySelector("#new-stack-image")
-  
+
   //let previewFormCreatorDomEl = document.querySelector("#creator")
 
   let title = document.querySelector("#new-title").value
@@ -186,8 +378,8 @@ function loadInfoFromEditor() {
 }
 
 function loadStepFromEditor() {
-  
-  
+
+
   let newStepDomEl = document.createElement("div")
   let newStepTitleDomEl = document.createElement("h3")
   let newStepInstDomEl = document.createElement("p")
@@ -205,7 +397,7 @@ function loadStepFromEditor() {
     container.appendChild(sourceContainerDomEl)
     newStepDomEl.classList.add("src-youtube")
   }
-  function bookSourceLoader(container) { 
+  function bookSourceLoader(container) {
     let sourceContainerDomEl = document.querySelector(".books-result")
     container.appendChild(sourceContainerDomEl)
     newStepDomEl.classList.add("src-book")
@@ -287,13 +479,13 @@ function sendInfoToDB() {
       let SPsrcTitle = document.querySelector(".src-spotify > .new-step-title").innerText
       let SPsrcDesc = document.querySelector(".src-spotify > .new-step-description").innerText
       let SPSongTitle = document.querySelector(".spotify-title").innerText
-      let SPSongArtist= document.querySelector(".spotify-artist").innerText;
+      let SPSongArtist = document.querySelector(".spotify-artist").innerText;
       let SPuri = document.querySelector(".spotify-uri").value
       let step = {
         resource: "spotify",
         title: SPsrcTitle,
         instruction: SPsrcDesc,
-        order: idx+1,
+        order: idx + 1,
         url: SPuri,
         songName: SPSongTitle,
         songArtist: SPSongArtist
@@ -309,7 +501,7 @@ function sendInfoToDB() {
         resource: "youtube",
         title: YBsrcTitle,
         instruction: YBsrcDesc,
-        order: idx+1,
+        order: idx + 1,
         url: YBUrl
       }
       hasVideo = true
@@ -323,7 +515,7 @@ function sendInfoToDB() {
         resource: "link",
         title: LKsrcTitle,
         instruction: LKsrcDesc,
-        order: idx+1,
+        order: idx + 1,
         url: LKUrl
       }
       hasLink = true
@@ -338,7 +530,7 @@ function sendInfoToDB() {
         resource: "doc",
         title: DCsrcTitle,
         instruction: DCsrcDesc,
-        order: idx+1,
+        order: idx + 1,
         url: DCUrl,
         docName: DCName
       }
@@ -350,14 +542,14 @@ function sendInfoToDB() {
       let BKsrcTitle = document.querySelector(".src-book > .new-step-title").innerText
       let BKsrcDesc = document.querySelector(".src-book > .new-step-description").innerText
       let BKname = document.querySelector(".book-title").innerText
-      let BKauthor= document.querySelector(".book-author").innerText;
+      let BKauthor = document.querySelector(".book-author").innerText;
       let BKurl = document.querySelector(".book-link").value
       let BKimg = document.querySelector(".book-image").value;
       let step = {
         resource: "book",
         title: BKsrcTitle,
         instruction: BKsrcDesc,
-        order: idx,
+        order: idx + 1,
         url: BKurl,
         bookName: BKname,
         bookAuthor: BKauthor,
@@ -375,7 +567,7 @@ function sendInfoToDB() {
         resource: "none",
         title: NNsrcTitle,
         instruction: NNsrcDesc,
-        order: idx+1,
+        order: idx + 1,
       }
       steps.push(step)
     }
@@ -407,7 +599,7 @@ function sendInfoToDB() {
 }
 
 //Login Display Toggle
-if(loginDisplayDomEl !== null){
+if (loginDisplayDomEl !== null) {
   loginDisplayDomEl.addEventListener("click", function (e) {
     e.preventDefault()
     fadeInDOMEl(loginDomEl, "hidden", 150)
@@ -419,7 +611,7 @@ if(loginDisplayDomEl !== null){
 }
 
 //New Stack Handlers
-if(uploadStackPic !== null){
+if (uploadStackPic !== null) {
   new Sortable(stepsContainer, {
     animation: 150,
     ghostClass: 'ghost'
@@ -485,7 +677,8 @@ if(uploadStackPic !== null){
 function spotifySearch() {
   let spotifyQuery = document.querySelector("#spotify-query").value
   let spotifyResults = document.querySelector(".spotify-results-list")
-  axios.get(`http://localhost:3000/stacks/spotifyAPI/${spotifyQuery}`).then(songsFound => {
+  setloadingState(spotifyResults,true)
+  axios.get(`https://stacknfly.herokuapp.com/stacks/spotifyAPI/${spotifyQuery}`).then(songsFound => {
 
     spotifyResults.innerHTML = ""
 
@@ -504,13 +697,13 @@ function spotifySearch() {
       let instDomel = document.createElement("span")
       let uriDomEl = document.createElement("input")
 
-      uriDomEl.setAttribute("type","hidden")
-      uriDomEl.setAttribute("class","spotify-uri")
-      uriDomEl.setAttribute(`value`,`${uri}`)
-      titleDomel.setAttribute("class","spotify-title")
-      artistDomel.setAttribute("class","spotify-artist")
+      uriDomEl.setAttribute("type", "hidden")
+      uriDomEl.setAttribute("class", "spotify-uri")
+      uriDomEl.setAttribute(`value`, `${uri}`)
+      titleDomel.setAttribute("class", "spotify-title")
+      artistDomel.setAttribute("class", "spotify-artist")
       imgContainer.appendChild(imgDomel)
-      
+
       infoContainer.appendChild(titleDomel)
       infoContainer.appendChild(artistDomel)
       infoContainer.appendChild(instDomel)
@@ -529,6 +722,7 @@ function spotifySearch() {
 
     })
   }).then(() => {
+    setloadingState(spotifyResults,false)
     let spotifyResultsList = document.querySelectorAll(".spotify-results-list > li")
     spotifyResultsList.forEach((result) => {
       result.addEventListener("click", function () {
@@ -553,9 +747,9 @@ function youtubeLinkToEmbed() {
   let iframeYoutube = document.createElement("iframe")
   let youtubeHidden = document.createElement("input")
 
-  youtubeHidden.setAttribute("type","hidden")
-  youtubeHidden.setAttribute("class","youtube-url")
-  youtubeHidden.setAttribute(`value`,`${youtubeEmbed}`)
+  youtubeHidden.setAttribute("type", "hidden")
+  youtubeHidden.setAttribute("class", "youtube-url")
+  youtubeHidden.setAttribute(`value`, `${youtubeEmbed}`)
   iframeYoutube.setAttribute(`src`, `${youtubeEmbed}`)
   youtubeContainer.setAttribute("class", "youtube-video")
   youtubeContainer.appendChild(iframeYoutube)
@@ -567,13 +761,14 @@ function youtubeLinkToEmbed() {
 function bookSearch() {
   let booksQuery = document.querySelector("#books-query").value
   let booksResults = document.querySelector(".books-results-list")
+  setloadingState(booksResults,true)
   booksQuery = booksQuery.split(" ").join("%20")
   axios.get(`https://www.googleapis.com/books/v1/volumes/?q=${booksQuery}`).then(booksFound => {
 
     booksResults.innerHTML = ""
- 
-    booksFound.data.items.splice(0,4).forEach((book) => {
-      
+
+    booksFound.data.items.splice(0, 4).forEach((book) => {
+
       let { volumeInfo } = book
 
       let bookInfoDomel = document.createElement("li")
@@ -587,17 +782,17 @@ function bookSearch() {
       let linkDomEl = document.createElement("input")
       let imgHidden = document.createElement("input")
 
-      imgHidden.setAttribute("type","hidden")
-      imgHidden.setAttribute("class","book-image")
-      imgHidden.setAttribute(`value`,`${volumeInfo.imageLinks.thumbnail}`)
-      linkDomEl.setAttribute("type","hidden")
-      linkDomEl.setAttribute("class","book-link")
-      linkDomEl.setAttribute(`value`,`${volumeInfo.infoLink}`)
-      titleDomel.setAttribute("class","book-title")
-      authorsDomel.setAttribute("class","book-author")
+      imgHidden.setAttribute("type", "hidden")
+      imgHidden.setAttribute("class", "book-image")
+      imgHidden.setAttribute(`value`, `${volumeInfo.imageLinks.thumbnail}`)
+      linkDomEl.setAttribute("type", "hidden")
+      linkDomEl.setAttribute("class", "book-link")
+      linkDomEl.setAttribute(`value`, `${volumeInfo.infoLink}`)
+      titleDomel.setAttribute("class", "book-title")
+      authorsDomel.setAttribute("class", "book-author")
       imgDomel.setAttribute("class", "book-img")
       imgContainer.appendChild(imgDomel)
-      
+
       infoContainer.appendChild(imgHidden)
       infoContainer.appendChild(titleDomel)
       infoContainer.appendChild(authorsDomel)
@@ -609,8 +804,8 @@ function bookSearch() {
       sourceContainer.setAttribute("class", "books-result")
       titleDomel.innerHTML = volumeInfo.title
       authorsDomel.innerHTML = volumeInfo.authors[0]
-      if (volumeInfo.imageLinks){
-      imgDomel.setAttribute(`src`, `${volumeInfo.imageLinks.thumbnail}`)
+      if (volumeInfo.imageLinks) {
+        imgDomel.setAttribute(`src`, `${volumeInfo.imageLinks.thumbnail}`)
       } else {
         imgDomel.setAttribute(`src`, `https://islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg`)
       }
@@ -621,6 +816,7 @@ function bookSearch() {
 
     })
   }).then(() => {
+    setloadingState(booksResults,false)
     let booksResultsList = document.querySelectorAll(".books-results-list > li")
     booksResultsList.forEach((result) => {
       result.addEventListener("click", function () {
@@ -634,5 +830,3 @@ function bookSearch() {
   })
 
 }
-
-  
