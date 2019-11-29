@@ -79,8 +79,8 @@ We both are just students trying to do our best that had fun working together fo
 > "This is my second project and I couldn't be more happy to be at Ironhack and have this amazing lead teacher I have"
 
 **Fran:**
->""
+>"First of all, thanks to Dani for his energy and passion in working on this project. I'm sure you'll be an amazing developer (But please stop drinking RedBull🤣)"
 
->""
+>"Of course, it's amazing to work with the support of our TA's. Lorena, Sito and Carlos, THANK YOU SO MUCH."
 
->""
+>"And Dani, our leading teacher, our Yoda. Thank you for giving us the opportunity to learn from you. You are the reference to follow <3"
