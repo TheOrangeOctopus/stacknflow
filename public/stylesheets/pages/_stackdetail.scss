@@ -12,6 +12,7 @@
   padding-left:4rem;
   border-image-source: linear-gradient( white,$primarycolorSoft);
   border-image-slice:5 2;
+  margin-top:4rem;
 
   h1{
     margin-top:6rem;
@@ -50,13 +51,18 @@
         color:$white;
         font-size:4rem;
         margin-left:2rem;
+        width:80%;
+        margin-bottom:2rem;
+      
       }
       h4{
+    
         color:$primarycolor;
         background-color:$primarycolorSoft;
         margin-left:2rem;
         padding:1rem 2rem;
         font-size:1.6rem;
+        display:inline-block;
       }
 
     }
@@ -78,7 +84,7 @@
 .one-step{
   border: 2px solid $primarycolorSoft;
   // box-shadow: 10px 10px 0px 2px $primarycolorSoft;
-  margin:2rem 0;
+  margin:4rem 0;
   padding:2rem;
   position:relative;
   
@@ -281,7 +287,27 @@
 
 
 
+.last-div{
+  h1{
+    margin-bottom:2rem;
+  }
 
+  a{
+    font-size:1.6rem;
+    padding:0.5rem 1rem;
+    background-color: $primarycolorSoft;
+    color:$primarycolor;
+    text-decoration:none;
+    transition:0.3s;
+  }
+
+  a:hover{
+    color:$white;
+    background-color: $primarycolor;
+    transition: 0.3s;
+  }
+  margin-bottom:4rem;
+}
 
 
 

@@ -18,6 +18,8 @@ const flash      = require("connect-flash");
 const User = require("./models/User");
 
 
+const secure = require("express-force-https")
+
 mongoose
   .connect(`${process.env.DB}`, {useNewUrlParser: true})
   .then(x => {
@@ -38,6 +40,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(secure);
 
 // Express View engine setup
 

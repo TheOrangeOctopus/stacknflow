@@ -395,3 +395,8 @@ h1{
   background-color: $primarycolorSoft;
 
 }
+
+.uploaded-document img{
+  width:10%;
+  object-fit: contain;
+}

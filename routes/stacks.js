@@ -6,11 +6,14 @@ const booksApi = require("google-books-search");
 const uploadPictureCloud = require("../configs/cloudinaryImg");
 const uploadDocumentCloud = require("../configs/cloudinaryDoc");
 
+
 const LocalStrategy = require("passport-local").Strategy;
 const ensureLogin = require("connect-ensure-login");
 const passport = require("passport");
 const User = require("../models/User"); "Stack"
 const bcrypt = require("bcrypt");
+
+
 
 router.get("/", (req, res, next) => {
   Stacks.find({ status: "active" })
