@@ -6,12 +6,12 @@ First Fullstack web project based in a recommendation of a set of activities to 
 
 ## About 📝
 This project has the next features:
--Login and Sign up. And Login with Google)
--User roles -> "user" and "admin"
--Full CRUD (if you are Admin 😎)
--Upload files!
--Search songs with Spotify API
--Search books with Google Books API
+- Login and Sign up. And Login with Google)
+- User roles -> "user" and "admin"
+- Full CRUD (if you are Admin 😎)
+- Upload files!
+- Search songs with Spotify API
+- Search books with Google Books API
 
 Was made with HTML5, CSS3, Javascript, Node.js, Express.js, MongoDB, Mongoose and Heroku to deploy it via web 💻
 
